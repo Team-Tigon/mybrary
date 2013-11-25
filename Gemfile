@@ -44,6 +44,10 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'state_machine'
+
+gem 'acts-as-taggable-on'
+
 group :test, :development do
   gem "rspec-rails"
   gem "capybara"
