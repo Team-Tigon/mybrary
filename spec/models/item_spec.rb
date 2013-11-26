@@ -2,22 +2,30 @@ require 'spec_helper'
 
 describe Item do
   context "testing attributes" do
-    Item.new(name:"PS2", url: "sony.com", description: "a very very old system")
+    it "should have a name, url, and description" do
+      item = Item.create(name:"PS2", url: "sony.com", description: "a very very old system")
+
+      expect(item.name).to eq("PS2")
+      expect(item.url).to eq("sony.com")
+      expect(item.description).to eq("a very very old system")
+    end
   end
 
   
   context "testing relations" do
     before do
-      @new_user = User.create(name: "Josh")
-      @item = new_user.items.create(name: "PS4")
+      @owner = User.create(name: "Josh")
+      @item = @owner.items.create(name: "PS4")
     end
 
     it 'is properly associated with its owner' do
-      expect(@item.user).to eq(@new_user)
+      expect(@item.user).to eq(@owner)
     end
 
-    it 'can be borrowed by other users' do
-
+    it 'can be borrowed by another user' do
+      borrower = User.new
+      loan = Loan.new(item: @item, user: borrower)
+      expect(item.borrowers.first).to eq(borrower)
     end
   end
 

@@ -3,8 +3,8 @@ class CreateLoans < ActiveRecord::Migration
     create_table :loans do |t|
       t.integer :item_id, index: true
       t.integer :user_id, index: true
-      t.date :borrowed_on 
-      t.date :returned_on
+      t.datetime :borrowed_on 
+      t.datetime :returned_on
       t.timestamps
     end
   end
