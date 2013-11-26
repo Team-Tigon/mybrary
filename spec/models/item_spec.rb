@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Item do
-  context "testing attributes" do
+  context "accessing attributes" do
     it "should have a name, url, and description" do
       item = Item.create(name:"PS2", url: "sony.com", description: "a very very old system")
 
@@ -24,9 +24,11 @@ describe Item do
 
     it 'can be borrowed by another user' do
       borrower = User.new
-      loan = Loan.new(item: @item, user: borrower)
-      expect(item.borrowers.first).to eq(borrower)
+      loan = Loan.create(item: @item, user: borrower)
+      expect(@item.borrowers.first).to eq(borrower)
     end
+
+
   end
 
   # let(:item) {Item.create(name:"RAILS 4 WaY", description:"A very good book?", url: "www.hi.com")}
@@ -39,10 +41,11 @@ describe Item do
 
   # end
 
-  context 'testing states' do 
-    it 'should be loanable'
-    it 'should be returnable'
-    it 'should be removable'
+  context 'states' do 
+    it 'should mark when it has been requested'
+    it 'should mark when it is loaned out'
+    it 'should mark when it is returned'
+    it 'should mark when it has been archived'
   end
 
   context 'testing tags' do

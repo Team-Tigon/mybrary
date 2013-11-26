@@ -1,4 +1,6 @@
 Mybrary::Application.routes.draw do
+  resources :groups
+
   resources :items
 
   resources :users
