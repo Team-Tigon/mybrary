@@ -12,9 +12,9 @@
   <tbody>
     <% @items.each do |item| %>
       <tr>
-        <td><%= link_to item.name, user_items_path(item) %></td>
-        <td><%= link_to 'Edit', edit_user_item_path(item) %></td>
-        <td><%= link_to 'Destroy', user_items_path %></td>
+        <td><%= link_to item.name, user_item_path(@user, item) %></td>
+        <td><%= link_to 'Edit', edit_user_item_path(@user, item) %></td>
+        <td><%= link_to 'Destroy', [@user, item], confirm: 'Are you sure?', method: :delete %></td>
       </tr>
     <% end %>
   </tbody>

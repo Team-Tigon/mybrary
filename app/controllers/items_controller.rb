@@ -1,17 +1,16 @@
 class ItemsController < ApplicationController
+  before_action :set_user, only: [:index, :show, :new, :edit, :update, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   # GET /items
   # GET /items.json
   def index
     @items = Item.where(:user_id => params[:user_id])
-
   end
 
   # GET /items/1
   # GET /items/1.json
   def show
-    @user = User.find(params[:user_id])
   end
 
   # GET /items/new
@@ -21,6 +20,7 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
+    @item = @user.items.find(params[:id])
   end
 
   # POST /items
@@ -43,23 +43,30 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1
   # PATCH/PUT /items/1.json
   def update
+    @item = @user.items.find(params[:id])
+
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to @item, notice: 'item was successfully updated.' }
+        format.html { redirect_to [@user, @item], notice: 'item was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
+
+
   end
 
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
+    @item = @user.items.find(params[:id])
     @item.destroy
+
+
     respond_to do |format|
-      format.html { redirect_to items_url }
+      format.html { redirect_to user_items_path(@user) }
       format.json { head :no_content }
     end
   end
@@ -68,6 +75,10 @@ class ItemsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_item
       @item = Item.find(params[:id])
+    end
+
+    def set_user
+      @user = User.find_by(id: params[:user_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
