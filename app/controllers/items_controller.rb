@@ -5,11 +5,13 @@ class ItemsController < ApplicationController
   # GET /items.json
   def index
     @items = Item.where(:user_id => params[:user_id])
+
   end
 
   # GET /items/1
   # GET /items/1.json
   def show
+    @user = User.find(params[:user_id])
   end
 
   # GET /items/new
@@ -25,10 +27,11 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.new(item_params)
-
+    @item.user_id = params[:user_id]
+#how do u require the user_id in the item_params (look into it later)
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: 'item was successfully created.' }
+        format.html { redirect_to user_items_path, notice: 'item was successfully created.' }
         format.json { render action: 'show', status: :created, location: @item }
       else
         format.html { render action: 'new' }
@@ -69,6 +72,7 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name,:user_id)
+      params.require(:item).permit(:name)
+
     end
 end
