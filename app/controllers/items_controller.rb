@@ -2,18 +2,13 @@ class ItemsController < ApplicationController
   before_action :set_user, only: [:index, :show, :new, :edit, :update, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
-  # GET /items
-  # GET /items.json
   def index
     @items = Item.where(:user_id => params[:user_id])
   end
 
-  # GET /items/1
-  # GET /items/1.json
   def show
   end
 
-  # GET /items/new
   def new
     @item = Item.new
   end
