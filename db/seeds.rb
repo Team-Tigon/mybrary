@@ -8,6 +8,8 @@
 
 
 u1 = User.create(firstname: "Sam", lastname: "Yang")
+u2 = User.create(firstname: "Bob", lastname: "Marley")
+u3 = User.create(firstname: "John", lastname: "Black")
 Item.create(
   user_id: 1, 
   name: "Edward Scissorhands", 
