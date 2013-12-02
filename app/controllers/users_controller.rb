@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :approve_loan, :request_loan, :deny_loan, :return_loan]
   before_action :set_item, only: [:approve_loan, :request_loan, :deny_loan, :return_loan]
-
+  skip_before_filter :authenticate_user!, only: [:index]
   # GET /users
   # GET /users.json
   def index
     @users = User.all
+    
   end
 
   # GET /users/1

@@ -10,7 +10,12 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
+    @group_items = @group.users.includes(:items).map do |user|
+      user.items 
+    end.flatten
+
   end
+
 
   # GET /groups/new
   def new

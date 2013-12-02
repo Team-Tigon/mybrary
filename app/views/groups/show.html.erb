@@ -26,5 +26,13 @@
     <% end %>
 </ul>
 
+<h4> Items: </h4>
+<ul>
+  <% @group_items.each do |item| %>
+    <li><%= link_to item.name, user_item_path(item.user_id, item.id) %></li>
+  <% end %>
+
+</ul>
+
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', groups_path %>
