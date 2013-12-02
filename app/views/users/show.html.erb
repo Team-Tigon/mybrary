@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
-<%= @user.name %>
+<h3><%= @user.name %></h3>
 
 <div>
-  <h3>Currently Borrowing</h3>
+  <h4>Currently Borrowing</h4>
   <ul>
   <% @user.currently_borrowing.each do |loan|%>
     <li><%= link_to loan.item.name, user_item_path(loan.item.user_id, loan.item_id) %> 
@@ -14,7 +14,7 @@
 
 
 <div>
-  <h3>Requested Pending Your Approval</h3>
+  <h4>Requested Pending Your Approval</h4>
   <ul>
   <% @user.my_requested_items.each do |item|%>
     <li><%= item.loans.last.user.name %> wants <%= link_to item.name, user_item_path(@user.id, item.id) %> 
@@ -28,13 +28,13 @@
 </div>
 
 <div>
-  <h3>Items Currently Loaned Out</h3>
+  <h4>Items Currently Loaned Out</h4>
   <ul>
   <% @user.my_loaned_items.each do |item|%>
     <li><%= link_to item.name, user_item_path(@user.id, item.id) %> 
       to <%= link_to item.loans.last.user.name, item.loans.last.user %>
       <% if current_user == @user %>
-        <%= button_to "Mark Returned", return_loan_path(@user.id, item.id) %>
+        <%= button_to "Mark Returned", return_loan_path(@user.id, item.id), data: { confirm: 'Are you sure?' } %>
       <% end %>
     </li>
   <% end %>
@@ -42,7 +42,7 @@
 </div>
 
 <div>
-  <h3>Your Available Items</h3>
+  <h4>Your Available Items</h4>
   <ul>
   <% @user.my_available_items.each do |item|%>
     <li><%= link_to item.name, user_item_path(@user.id, item.id) %>

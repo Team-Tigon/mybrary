@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: [:show, :edit, :update, :destroy]
+  before_action :set_group, only: [:show, :edit, :update, :destroy, :join_group, :leave_group]
 
   # GET /groups
   # GET /groups.json
@@ -19,6 +19,17 @@ class GroupsController < ApplicationController
 
   # GET /groups/1/edit
   def edit
+  end
+
+  def join_group
+    @group.memberships.create(:user_id => params[:user_id])
+    redirect_to @group
+  end
+
+  def leave_group
+    membership = @group.memberships.find_by(:user_id => params[:user_id])
+    membership.destroy
+    redirect_to @group
   end
 
   # POST /groups

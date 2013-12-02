@@ -9,6 +9,22 @@
   <strong>Description:</strong>
   <%= @group.description %>
 </p>
+<% if current_user != nil %>
+  <% if !(current_user.groups.include?(@group)) %>
+    <%= button_to 'Join this group', join_group_path(@group.id, current_user.id) %>
+  <% else %>
+    <%= button_to 'Leave this group', leave_group_path(@group.id, current_user.id), data: { confirm: 'Are you sure?' } %>
+  <% end %>
+<% end %>
+
+<h4>Members:</h4>
+<ul>
+  <% @group.memberships.each do |m| %>
+    <li>
+      <%= link_to m.user.name, m.user %>
+    </li>
+    <% end %>
+</ul>
 
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', groups_path %>
