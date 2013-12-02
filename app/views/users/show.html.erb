@@ -54,6 +54,15 @@
   </ul>
 </div>
 
+<div>
+  <h4>Your Groups</h4>
+  <ul>
+  <% @user.groups.each do |g|%>
+    <li><%= link_to g.name, g %></li>
+  <% end %>
+  </ul>
+</div>
+
 <%= link_to 'List a New Item', new_user_item_path(@user) %>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
