@@ -2,7 +2,7 @@ Mybrary::Application.routes.draw do
   get "sessions/create"
   get "sessions/destroy"
   resources :users do
-    resources :items
+    resources :items, except: [:index]
   end
 
   resources :groups

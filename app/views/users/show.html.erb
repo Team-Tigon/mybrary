@@ -17,9 +17,11 @@
   <h3>Requested Pending Your Approval</h3>
   <ul>
   <% @user.my_requested_items.each do |item|%>
-    <li><%= link_to item.name, user_item_path(@user.id, item.id) %> 
-      <%= button_to "Approve", approve_loan_path(@user.id, item.id) %>
-      <%= button_to "Deny", deny_loan_path(@user.id, item.id) %>
+    <li><%= item.loans.last.user.name %> wants <%= link_to item.name, user_item_path(@user.id, item.id) %> 
+      <% if current_user == @user %>
+        <%= button_to "Approve", approve_loan_path(@user.id, item.id) %>
+        <%= button_to "Deny", deny_loan_path(@user.id, item.id) %>
+      <% end %>
     </li>
   <% end %>
   </ul>
@@ -31,7 +33,9 @@
   <% @user.my_loaned_items.each do |item|%>
     <li><%= link_to item.name, user_item_path(@user.id, item.id) %> 
       to <%= link_to item.loans.last.user.name, item.loans.last.user %>
-      <%= button_to "Mark Returned", return_loan_path(@user.id, item.id) %>
+      <% if current_user == @user %>
+        <%= button_to "Mark Returned", return_loan_path(@user.id, item.id) %>
+      <% end %>
     </li>
   <% end %>
   </ul>
@@ -42,7 +46,9 @@
   <ul>
   <% @user.my_available_items.each do |item|%>
     <li><%= link_to item.name, user_item_path(@user.id, item.id) %>
-      <%= button_to "Request to Borrow", request_loan_path(4, item.id) %> 
+      <% if current_user != @user %>
+        <%= button_to "Request to Borrow", request_loan_path(current_user, item.id) %> 
+      <% end %>
     </li>
   <% end %>
   </ul>
