@@ -12,15 +12,30 @@
   </ul>
 </div>
 
+<div> 
+  <h4>Items <%= @user.name %>'s Requested </h4>
+  <ul>
+  <% @user.currently_requesting.each do |loan|%>
+    <li><%= loan.user.name %> requested <%= link_to loan.item.name, user_item_path(loan.user.id, loan.item.id) %> on <%= loan.created_at.strftime("%h %d") %>
+      <% if current_user == @user %>
+        <%= button_to "Cancel Request", deny_loan_path(loan.user.id, loan.item.id)  %>
+      <% end %>
+    </li>
+  <% end %>
+  </ul>
 
+
+</div>
 <div>
-  <h4>Requested Pending Your Approval</h4>
+  <h4>Requested Pending <%= @user.name %>'s Approval</h4>
   <ul>
   <% @user.my_requested_items.each do |item|%>
     <li><%= item.loans.last.user.name %> wants <%= link_to item.name, user_item_path(@user.id, item.id) %> 
       <% if current_user == @user %>
         <%= button_to "Approve", approve_loan_path(@user.id, item.id) %>
         <%= button_to "Deny", deny_loan_path(@user.id, item.id) %>
+      <% elsif current_user == item.loans.last.user %>
+        <%= button_to "Cancel Request", deny_loan_path(@user.id, item.id)  %>
       <% end %>
     </li>
   <% end %>
@@ -46,7 +61,7 @@
   <ul>
   <% @user.my_available_items.each do |item|%>
     <li><%= link_to item.name, user_item_path(@user.id, item.id) %>
-      <% if current_user != @user %>
+      <% if current_user && current_user != @user %>
         <%= button_to "Request to Borrow", request_loan_path(current_user, item.id) %> 
       <% end %>
     </li>

@@ -7,9 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-u1 = User.create(name: "Sam")
-u2 = User.create(name: "Bob")
-u3 = User.create(name: "John")
+u1 = User.create(name: "Sam Yang", uid: "793818775", provider: "facebook", oauth_token: "CAAIDKdWrzEMBAIgyH4XWea8ZCC0mHZBdRa2PUxzOupMefZAf9DrjKZAqZAUfbW4t8onB6Qje90MPfgHNujyNYDx85i9cjBwyZB0fQ6zAQgrCzbcyaVRwNZCfLSM2syFe4nKruHf9ZBxcZBwzy8XEQsw7f6ociuCmMVOJ5anKM4r2FGtimzoZB5TSqWpVLflQGQbNA9dVI34QtLWAZDZD")
 Item.create(
   user_id: 1, 
   name: "Edward Scissorhands", 
@@ -42,7 +40,7 @@ Item.create(
   )
 
 
-u2 = User.create(name: "James")
+u2 = User.create(name: "James Tong", uid:"1351920338" , provider: "facebook" , oauth_token: "CAAIDKdWrzEMBAEI09m2qD6j1Hs5V2xQCDi9tvDa5q0XTdZA5C88TwuML4I6U8HjKwoZAiSV5GUwg5EH5RyYl7ssTx8iPRiACZCeE9COi4iBvmDPwttHyh3jPTFjQIsZBMUwTIlXQy5AJ0vx0P9J9aY5zbz56qIKMgDRxyY6FgoQthOZA1MVR4tguZA7HNe5CAZD")
 Item.create(
   user_id: 2, 
   name: "Beginning Ruby", 
@@ -59,7 +57,7 @@ Item.create(
   description: "MP3" 
   )
 
-u1 = User.create(name: "Josh")
+u3 = User.create(name: "Josh")
 Item.create(
   user_id: 3, 
   name: "Edward Scissorhands", 
@@ -92,7 +90,6 @@ Item.create(
   description: "Just a plain old hammer" 
   )
 
-
 g1 = Group.create(name: "003 Flatiron", description: "Crowd Library of flatiron 003 Ruby Rails students and staff")
 g2 = Group.create(name: "000 Flatiron iOS", description: "Crowd Library of flatiron 000 iOS students and staff")
 
@@ -100,6 +97,8 @@ Membership.create(group_id: 1, user_id: 1)
 Membership.create(group_id: 1, user_id: 2)
 Membership.create(group_id: 1, user_id: 3)
 Membership.create(group_id: 2, user_id: 1)
+
+
 
 
 
