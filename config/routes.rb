@@ -1,4 +1,6 @@
 Mybrary::Application.routes.draw do
+  get "sessions/create"
+  get "sessions/destroy"
   resources :users do
     resources :items
   end
@@ -12,6 +14,9 @@ Mybrary::Application.routes.draw do
   post 'user/:id/denies/:item_id' => 'users#deny_loan', as: :deny_loan
   post 'user/:id/returns/:item_id' => 'users#return_loan', as: :return_loan
 
+  match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
+  match 'auth/failure', to: redirect('/'), via: [:get, :post]
+  match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

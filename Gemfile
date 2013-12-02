@@ -5,6 +5,8 @@ gem 'rails', '4.0.1'
 gem 'acts-as-taggable-on'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+gem 'omniauth'
+gem 'omniauth-facebook', '1.4.0'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

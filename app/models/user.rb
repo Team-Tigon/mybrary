@@ -5,9 +5,9 @@ class User < ActiveRecord::Base
   has_many :loans
   has_many :borrowed_items, through: :loans, source: "item"
 
-  def name
-    "#{firstname.capitalize} #{lastname.capitalize}"
-  end
+  # def name
+  #   "#{firstname.capitalize} #{lastname.capitalize}"
+  # end
 
 
   def request_loan(item)
@@ -47,6 +47,17 @@ class User < ActiveRecord::Base
     self.loans.where(returned_on: nil).where.not(borrowed_on: nil)
   end
 
+  def self.from_omniauth(auth)
+    where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.name = auth.info.name
+      user.oauth_token = auth.credentials.token
+      user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+      user.save!
+    end
+  end
+  
 end
 
 

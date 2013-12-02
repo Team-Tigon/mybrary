@@ -51,8 +51,11 @@ ActiveRecord::Schema.define(version: 20131126205038) do
   add_index "memberships", ["user_id"], name: "index_memberships_on_user_id"
 
   create_table "users", force: true do |t|
-    t.string   "firstname"
-    t.string   "lastname"
+    t.string   "name"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

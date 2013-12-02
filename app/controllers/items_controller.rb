@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
 #how do u require the user_id in the item_params (look into it later)
     respond_to do |format|
       if @item.save
-        format.html { redirect_to user_items_path, notice: 'item was successfully created.' }
+        format.html { redirect_to user_path(@item.user_id), notice: 'item was successfully created.' }
         format.json { render action: 'show', status: :created, location: @item }
       else
         format.html { render action: 'new' }

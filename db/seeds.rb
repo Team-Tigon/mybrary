@@ -7,9 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-u1 = User.create(firstname: "Sam", lastname: "Yang")
-u2 = User.create(firstname: "Bob", lastname: "Marley")
-u3 = User.create(firstname: "John", lastname: "Black")
+u1 = User.create(name: "Sam")
+u2 = User.create(name: "Bob")
+u3 = User.create(name: "John")
 Item.create(
   user_id: 1, 
   name: "Edward Scissorhands", 
@@ -42,7 +42,7 @@ Item.create(
   )
 
 
-u2 = User.create(firstname: "James", lastname: "Tong")
+u2 = User.create(name: "James")
 Item.create(
   user_id: 2, 
   name: "Beginning Ruby", 
@@ -59,7 +59,7 @@ Item.create(
   description: "MP3" 
   )
 
-u1 = User.create(firstname: "Josh", lastname: "Scaglione")
+u1 = User.create(name: "Josh")
 Item.create(
   user_id: 3, 
   name: "Edward Scissorhands", 
