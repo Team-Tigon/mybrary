@@ -57,7 +57,7 @@ Item.create(
   description: "MP3" 
   )
 
-u3 = User.create(name: "Josh")
+u3 = User.create(name: "Josh Scaglione", provider: "facebook", uid: "100003210068077" ,oauth_token: "CAAIDKdWrzEMBAINP6UCfRhYZAAu5OeZCf74L3Ua4HkbClQbnnxo7UDVbY3rIkJq9nCH9kfhN3Rl7wIoTd7nZC9WtFHUuXfHtSh3XkR83bgvZCHQt0Sn4RYfZA3QZAXJUlwWFE1tYkRXzOnwBIbd0gzr9c68cNgcgshgqy7hSXvV8gIAOdr9cYCw3b4S0tzda7Si1YjSBNLNQZDZD")
 Item.create(
   user_id: 3, 
   name: "Edward Scissorhands", 
