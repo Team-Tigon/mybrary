@@ -1,8 +1,9 @@
 <p id="notice"><%= notice %></p>
 <%= @user.name %>
 
+<h3>Available Items</h3>
 <ul>
-<% @user.items.each do |item|%>
+<% @user.my_available_items.each do |item|%>
   <li><%= link_to item.name, user_item_path(@user.id, item.id) %></li>
 <% end %>
 </ul>

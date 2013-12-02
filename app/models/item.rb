@@ -3,5 +3,24 @@ class Item < ActiveRecord::Base
   has_many :loans
   has_many :borrowers, through: :loans, source: "user"
 
+  state_machine :initial => :available do
+
+    event :request_event do
+      transition :available => :requested
+    end
+
+    event :deny_event do
+      transition :requested => :available
+    end
+
+    event :loan_event do
+      transition :requested => :borrowed
+    end
+
+    event :return_event do
+      transition :borrowed => :available
+    end
+
+  end
 
 end

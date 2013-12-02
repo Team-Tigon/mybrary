@@ -49,7 +49,7 @@ gem 'state_machine'
 gem 'acts-as-taggable-on'
 
 group :test, :development do
-  gem "pry"
+  gem "pry-rails"
   gem "rspec-rails"
   gem "capybara"
   gem "selenium-webdriver"
