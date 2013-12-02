@@ -1,12 +1,44 @@
 <p id="notice"><%= notice %></p>
 <%= @user.name %>
 
-<h3>Available Items</h3>
-<ul>
-<% @user.my_available_items.each do |item|%>
-  <li><%= link_to item.name, user_item_path(@user.id, item.id) %></li>
-<% end %>
-</ul>
+<div>
+  <h3>Items You've Borrowed From Others</h3>
+  <ul>
+  <% @user.currently_borrowing.each do |item|%>
+    <li><%= link_to item.name, user_item_path(item.user_id, item.id) %> </li>
+  <% end %>
+  </ul>
+</div>
+
+
+<div>
+  <h3>Requested Items (pending your approval)</h3>
+  <ul>
+  <% @user.my_requested_items.each do |item|%>
+    <li><%= link_to item.name, user_item_path(@user.id, item.id) %> </li>
+  <% end %>
+  </ul>
+</div>
+
+<div>
+  <h3>Items Currently Loaned Out</h3>
+  <ul>
+  <% @user.my_loaned_items.each do |item|%>
+    <li><%= link_to item.name, user_item_path(@user.id, item.id) %> </li>
+  <% end %>
+  </ul>
+</div>
+
+<div>
+  <h3>Your Available Items</h3>
+  <ul>
+  <% @user.my_available_items.each do |item|%>
+    <li><%= link_to item.name, user_item_path(@user.id, item.id) %>
+      <%= button_to "Request to Borrow", request_loan_path() %> 
+    </li>
+  <% end %>
+  </ul>
+</div>
 
 <%= link_to 'List a New Item', new_user_item_path(@user) %>
 <%= link_to 'Edit', edit_user_path(@user) %> |

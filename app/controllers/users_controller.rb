@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :approve, :request, :deny, :return]
+  before_action :set_item, only: [:approve, :request, :deny, :return]
 
   # GET /users
   # GET /users.json
@@ -19,6 +20,20 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+  end
+
+  def request_loan
+    @user.request_loan(@item)
+    redirect_to(:show)
+  end
+
+  def approve_loan
+  end
+
+  def deny_loan
+  end
+
+  def return_loan
   end
 
   # POST /users
@@ -65,6 +80,10 @@ class UsersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
+    end
+
+    def set_item
+      @item = Item.find(params[:item_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
