@@ -1,10 +1,11 @@
 <p id="notice"><%= notice %></p>
 <%= @user.name %>
 
+<ul>
 <% @user.items.each do |item|%>
-  <%= item.name %>
+  <li><%= item.name %></li>
 <% end %>
-
+</ul>
 <%= link_to 'List a New Item', new_user_item_path(@user) %>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
