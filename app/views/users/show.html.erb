@@ -2,7 +2,7 @@
 <%= @user.name %>
 
 <% @user.items.each do |item|%>
-  <%= item.name %>
+  <li><%= link_to item.name, user_item_path(@user.id, item.id) %></li>
 <% end %>
 
 <%= link_to 'List a New Item', new_user_item_path(@user) %>
