@@ -7,10 +7,10 @@ Mybrary::Application.routes.draw do
 
   root 'users#index'
 
-  post 'user/:id/requests/:item_id' => 'user#request_loan', as: :request_loan
-  post 'user/:id/approves/:item_id' => 'user#approve_loan'
-  post 'user/:id/denies/:item_id' => 'user#deny_loan'
-  post 'user/:id/returns/:item_id' => 'user#return_loan'
+  post 'user/:id/requests/:item_id' => 'users#request_loan', as: :request_loan
+  post 'user/:id/approves/:item_id' => 'users#approve_loan', as: :approve_loan
+  post 'user/:id/denies/:item_id' => 'users#deny_loan', as: :deny_loan
+  post 'user/:id/returns/:item_id' => 'users#return_loan', as: :return_loan
 
 
   # The priority is based upon order of creation: first created -> highest priority.

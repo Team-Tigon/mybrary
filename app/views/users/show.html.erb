@@ -2,20 +2,25 @@
 <%= @user.name %>
 
 <div>
-  <h3>Items You've Borrowed From Others</h3>
+  <h3>Currently Borrowing</h3>
   <ul>
-  <% @user.currently_borrowing.each do |item|%>
-    <li><%= link_to item.name, user_item_path(item.user_id, item.id) %> </li>
+  <% @user.currently_borrowing.each do |loan|%>
+    <li><%= link_to loan.item.name, user_item_path(loan.item.user_id, loan.item_id) %> 
+      from <%= link_to loan.item.user.name, loan.item.user %>
+    </li>
   <% end %>
   </ul>
 </div>
 
 
 <div>
-  <h3>Requested Items (pending your approval)</h3>
+  <h3>Requested Pending Your Approval</h3>
   <ul>
   <% @user.my_requested_items.each do |item|%>
-    <li><%= link_to item.name, user_item_path(@user.id, item.id) %> </li>
+    <li><%= link_to item.name, user_item_path(@user.id, item.id) %> 
+      <%= button_to "Approve", approve_loan_path(@user.id, item.id) %>
+      <%= button_to "Deny", deny_loan_path(@user.id, item.id) %>
+    </li>
   <% end %>
   </ul>
 </div>
@@ -24,7 +29,10 @@
   <h3>Items Currently Loaned Out</h3>
   <ul>
   <% @user.my_loaned_items.each do |item|%>
-    <li><%= link_to item.name, user_item_path(@user.id, item.id) %> </li>
+    <li><%= link_to item.name, user_item_path(@user.id, item.id) %> 
+      to <%= link_to item.loans.last.user.name, item.loans.last.user %>
+      <%= button_to "Mark Returned", return_loan_path(@user.id, item.id) %>
+    </li>
   <% end %>
   </ul>
 </div>
@@ -34,7 +42,7 @@
   <ul>
   <% @user.my_available_items.each do |item|%>
     <li><%= link_to item.name, user_item_path(@user.id, item.id) %>
-      <%= button_to "Request to Borrow", request_loan_path() %> 
+      <%= button_to "Request to Borrow", request_loan_path(4, item.id) %> 
     </li>
   <% end %>
   </ul>

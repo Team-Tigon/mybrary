@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
     item.deny_event
   end
 
-  def mark_returned(item)
+  def return_loan(item)
     item.loans.last.update(:returned_on => Time.now)
     item.return_event
   end
@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
   end
 
   def currently_borrowing
-    self.loans.where(returned_on: nil)
+    self.loans.where(returned_on: nil).where.not(borrowed_on: nil)
   end
 
 end

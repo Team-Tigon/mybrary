@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :approve, :request, :deny, :return]
-  before_action :set_item, only: [:approve, :request, :deny, :return]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :approve_loan, :request_loan, :deny_loan, :return_loan]
+  before_action :set_item, only: [:approve_loan, :request_loan, :deny_loan, :return_loan]
 
   # GET /users
   # GET /users.json
@@ -24,16 +24,22 @@ class UsersController < ApplicationController
 
   def request_loan
     @user.request_loan(@item)
-    redirect_to(:show)
+    redirect_to(@user)
   end
 
   def approve_loan
+    @user.approve_loan(@item)
+    redirect_to(@user)    
   end
 
   def deny_loan
+    @user.deny_loan(@item)
+    redirect_to(@user)
   end
 
   def return_loan
+    @user.return_loan(@item)
+    redirect_to(@user)
   end
 
   # POST /users
