@@ -34,16 +34,21 @@ class GroupsController < ApplicationController
   def leave_group
     membership = @group.memberships.find_by(:user_id => params[:user_id])
     membership.destroy
-    redirect_to @group
+    if @group.memberships.size == 0
+      @group.destroy
+      redirect_to current_user, notice: "You were the last member of that group. It is now gone :( "
+    else
+      redirect_to @group
+    end
   end
 
   # POST /groups
   # POST /groups.json
   def create
     @group = Group.new(group_params)
-
     respond_to do |format|
       if @group.save
+       @group.memberships.create(user_id: current_user.id)
         format.html { redirect_to @group, notice: 'Group was successfully created.' }
         format.json { render action: 'show', status: :created, location: @group }
       else
