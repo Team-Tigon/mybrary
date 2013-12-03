@@ -1,87 +1,108 @@
 <p id="notice"><%= notice %></p>
 <h3><%= @user.name %></h3>
 
-<div>
-  <h4 span title="Items you are currently borrowing">Borrowing (<%= @user.currently_borrowing.size %>)</h4>
-  <ul>
-  <% @user.currently_borrowing.each do |loan|%>
-    <li>'<%= link_to loan.item.name, user_item_path(loan.item.user_id, loan.item_id) %>' 
-      borrowed from <%= link_to loan.item.user.name, loan.item.user %> 
-      on <%= loan.created_at.strftime("%h %d") %>
-    </li>
-  <% end %>
-  </ul>
-</div>
 
-<div> 
-  <h4 span title="Items you've requested and are waiting for a response on">Waiting (<%= @user.currently_requesting.size %>)</h4>
-  <ul>
-  <% @user.currently_requesting.each do |loan|%>
-    <li>You requested '<%= link_to loan.item.name, user_item_path(loan.user.id, loan.item.id) %>' 
-      from <%= link_to loan.item.user.name, user_path(loan.item.user) %> 
-      on <%= loan.created_at.strftime("%h %d") %>
-      <% if current_user == @user %>
-        <%= button_to "Cancel Request", deny_loan_path(loan.user.id, loan.item.id)  %>
-      <% end %>
-    </li>
-  <% end %>
-  </ul>
+  <h4 class="margin-top-large">Stuff You Own (To Approve: <%= @user.my_requested_items.size %> / 
+    Lent out: <%= @user.my_loaned_items.size %> / 
+    Available Items: <%= @user.my_available_items.size %>)
+  </h4>
+    <%= button_to 'Add New Item', new_user_item_path(@user) %>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Status</th>
+          <th>Loan Partner</th>
+          <th>Date</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @user.my_requested_items.each do |item| %>
+          <tr>
+            <td><%= link_to item.name, user_item_path(@user.id, item.id) %></td>
+            <td>Requested by</td>
+            <td><%= link_to item.loans.last.user.name, user_path(item.loans.last.user) %></td>
+            <td>on <%= item.loans.last.created_at.strftime("%h %d") %></td>
+            <td>
+              <% if current_user == @user %>
+                <div><%= button_to "Approve", approve_loan_path(@user.id, item.id) %></div>
+                <div><%= button_to "Deny", deny_loan_path(@user.id, item.id) %></div>
+              <% elsif current_user == item.loans.last.user %>
+                <%= button_to "Cancel Request", deny_loan_path(@user.id, item.id)  %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+        <% @user.my_loaned_items.each do |item| %>
+          <tr>
+            <td><%= link_to item.name, user_item_path(@user.id, item.id) %></td>
+            <td>Lent out to </td>
+            <td><%= link_to item.loans.last.user.name, item.loans.last.user %></td>
+            <td>on <%= item.loans.last.created_at.strftime("%h %d") %></td>
+            <td><% if current_user == @user %>
+              <%= button_to "Mark as Available", return_loan_path(@user.id, item.id), data: { confirm: 'Are you sure? This cannot be undone.' } %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+        <% @user.my_available_items.each do |item| %>
+          <tr>
+            <td><%= link_to item.name, user_item_path(@user.id, item.id) %></td>
+            <td>Available</td>
+            <td></td>
+            <td></td>
+            <td><% if current_user && current_user != @user %>
+              <%= button_to "Request to Borrow", request_loan_path(current_user, item.id) %> 
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-</div>
-<div>
-  <h4>To Approve (<%= @user.my_requested_items.size %>)</h4>
-  <ul>
-  <% @user.my_requested_items.each do |item|%>
-    <li><%= link_to item.loans.last.user.name, user_path(item.loans.last.user) %> 
-      requested '<%= link_to item.name, user_item_path(@user.id, item.id) %>' 
-      from you on <%= item.loans.last.created_at.strftime("%h %d") %>
-      <% if current_user == @user %>
-        <%= button_to "Approve", approve_loan_path(@user.id, item.id) %>
-        <%= button_to "Deny", deny_loan_path(@user.id, item.id) %>
-      <% elsif current_user == item.loans.last.user %>
-        <%= button_to "Cancel Request", deny_loan_path(@user.id, item.id)  %>
-      <% end %>
-    </li>
-  <% end %>
-  </ul>
-</div>
 
-<div>
-  <h4>Lending (<%= @user.my_loaned_items.size %>)</h4>
-  <ul>
-  <% @user.my_loaned_items.each do |item|%>
-    <li>'<%= link_to item.name, user_item_path(@user.id, item.id) %>' 
-      was lent to <%= link_to item.loans.last.user.name, item.loans.last.user %> 
-      on <%= item.loans.last.created_at.strftime("%h %d") %>
-      <% if current_user == @user %>
-        <%= button_to "Mark Returned", return_loan_path(@user.id, item.id), data: { confirm: 'Are you sure?' } %>
-      <% end %>
-    </li>
-  <% end %>
-  </ul>
-</div>
+  <h4 class="margin-top-large">Stuff You Borrow  (Total borrowing: <%= @user.currently_borrowing.size %> / 
+    Total waiting: <%= @user.currently_requesting.size %>)</h4> 
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Status</th>
+          <th>Loan Partner</th>
+          <th>Date</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @user.currently_borrowing.each do |loan|%>
+          <tr>
+            <td><%= link_to loan.item.name, user_item_path(loan.item.user_id, loan.item_id) %></td>
+            <td>Borrowing from</td>
+            <td><%= link_to loan.item.user.name, loan.item.user %></td>
+            <td>since <%= loan.created_at.strftime("%h %d") %></td>
+            <td></td>
+          </tr>
+        <% end %>
+        <% @user.currently_requesting.each do |loan|%>
+          <tr>
+            <td><%= link_to loan.item.name, user_item_path(loan.user.id, loan.item.id) %></td>
+            <td>Awaiting reply from</td>
+            <td><%= link_to loan.item.user.name, user_path(loan.item.user) %></td>
+            <td>since <%= loan.created_at.strftime("%h %d") %></td>
+            <td><% if current_user == @user %>
+              <%= button_to "Cancel Request", deny_loan_path(loan.user.id, loan.item.id)  %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>   
 
-<div>
-  <h4>Available Items (<%= @user.my_available_items.size %>) 
-    <%= link_to 'Add New Item', new_user_item_path(@user) %> </h4>
-  <ul>
-  <% @user.my_available_items.each do |item|%>
-    <li><%= link_to item.name, user_item_path(@user.id, item.id) %>
-      <% if current_user && current_user != @user %>
-        <%= button_to "Request to Borrow", request_loan_path(current_user, item.id) %> 
-      <% end %>
-    </li>
-  <% end %>
-  </ul>
-</div>
 
-<%= link_to 'List a New Item', new_user_item_path(@user) %>
 
-<div>
-  <h4>Memberships (<%= @user.groups.size %>)</h4>
-  <ul>
+  Memberships (<%= @user.groups.size %>)
   <% @user.groups.each do |g|%>
     <li><%= link_to g.name, g %></li>
   <% end %>
-  </ul>
-</div>
+
