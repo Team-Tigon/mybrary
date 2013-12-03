@@ -11,3 +11,8 @@
  *= require_self
  *= require_tree .
  */
+
+/* changes links colors for login and signup to be white after visit */
+a.btn:visited {
+  color: white;
+}
