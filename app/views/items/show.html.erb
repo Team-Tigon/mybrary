@@ -1,7 +1,8 @@
 <p id="notice"><%= notice %></p>
-<%= @item.name %>
+<h3><%= @item.name %> - <%= @item.type_list %></h3>
+<h4>Tags: <%= @item.tag_list %></h4>
 
 
 <%= link_to 'Edit', edit_user_item_path(@user, @item) %> |
-<%= link_to 'Back', user_items_path %>
+<%= link_to 'Back', user_path(@user) %>
  

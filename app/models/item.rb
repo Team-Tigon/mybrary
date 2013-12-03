@@ -3,6 +3,9 @@ class Item < ActiveRecord::Base
   has_many :loans
   has_many :borrowers, through: :loans, source: "user"
 
+  acts_as_taggable
+  acts_as_taggable_on :types
+
   state_machine :initial => :available do
 
     event :request_event do
