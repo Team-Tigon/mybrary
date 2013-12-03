@@ -5,10 +5,10 @@ Mybrary::Application.routes.draw do
     resources :items, except: [:index]
   end
 
-
+  
   resources :groups
 
-  root 'users#splash'
+  root 'users#index'
 
   post 'user/:id/requests/:item_id' => 'users#request_loan', as: :request_loan
   post 'user/:id/approves/:item_id' => 'users#approve_loan', as: :approve_loan
