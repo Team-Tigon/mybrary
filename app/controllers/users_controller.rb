@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :approve_loan, :request_loan, :deny_loan, :return_loan]
   before_action :set_item, only: [:approve_loan, :request_loan, :deny_loan, :return_loan]
-  skip_before_filter :authenticate_user!, only: [:index]
+  skip_before_filter :authenticate_user!, only: [:index, :splash]
   # GET /users
   # GET /users.json
   def index
@@ -81,6 +81,10 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url }
       format.json { head :no_content }
     end
+  end
+
+  def splash
+
   end
 
   private
