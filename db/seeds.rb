@@ -90,15 +90,20 @@ Item.create(
   description: "Just a plain old hammer" 
   )
 
-g1 = Group.create(name: "003 Flatiron", description: "Crowd Library of flatiron 003 Ruby Rails students and staff")
-g2 = Group.create(name: "000 Flatiron iOS", description: "Crowd Library of flatiron 000 iOS students and staff")
+g1 = Group.create(name: "003 Flatiron", description: "Flatiron 003 students and staff")
+g2 = Group.create(name: "000 Flatiron iOS", description: "Flatiron 000 iOS students and staff")
 
 Membership.create(group_id: 1, user_id: 1)
 Membership.create(group_id: 1, user_id: 2)
 Membership.create(group_id: 1, user_id: 3)
 Membership.create(group_id: 2, user_id: 1)
 
-
+Loans.create(item_id: 6, user_id: 1, borrowed_on: "2013-12-03 02:45:27.015128", created_at: "2013-12-03 02:14:41.780445", updated_at: "2013-12-03 02:45:27.015759")
+Loans.create(item_id: 2, user_id: 2, borrowed_on: "2013-12-03 02:47:19.371851", created_at: "2013-12-03 02:46:48.727331", updated_at: "2013-12-03 02:47:19.372509")
+Loans.create(item_id: 4, user_id: 3, borrowed_on: "2013-12-03 02:57:20.371851", created_at: "2013-12-03 02:50:48.727331", updated_at: "2013-12-03 02:57:20.372509")
+Loans.create(item_id: 7, user_id: 1)
+Loans.create(item_id: 3, user_id: 2)
+Loans.create(item_id: 8, user_id: 3)
 
 
 

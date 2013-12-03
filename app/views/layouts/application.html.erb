@@ -9,14 +9,15 @@
 <body>
  <div id="user-widget">
   <% if current_user %>
-    Signed in as <strong><%= current_user.name %></strong>|
+    <strong><%= link_to current_user.name, edit_user_path(current_user.id) %></strong> | 
+    <%= link_to "Admin", users_path %> | 
     <%= link_to "Home", current_user %> | 
+    <%= link_to 'Groups', groups_path %> | 
     <%= link_to "Sign out", signout_path, id: "sign_out" %>
   <% else %>
     <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
   <% end %>
 </div>
-<%= link_to 'Groups', groups_path %>
 
 
 <%= yield %>
