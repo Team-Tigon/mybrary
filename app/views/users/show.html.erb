@@ -5,10 +5,12 @@
   <h4 span title="Items you are currently borrowing">Borrowing (<%= @user.currently_borrowing.size %>)</h4>
   <ul>
   <% @user.currently_borrowing.each do |loan|%>
-    <li>'<%= link_to loan.item.name, user_item_path(loan.item.user_id, loan.item_id) %>' 
-      borrowed from <%= link_to loan.item.user.name, loan.item.user %> 
-      on <%= loan.created_at.strftime("%h %d") %>
-    </li>
+    <% if @user == current_user %>
+      <li>'<%= link_to loan.item.name, user_item_path(loan.item.user_id, loan.item_id) %>' 
+        borrowed from <%= link_to loan.item.user.name, loan.item.user %> 
+        on <%= loan.created_at.strftime("%h %d") %>
+      </li>
+    <% end %>
   <% end %>
   </ul>
 </div>
@@ -17,12 +19,14 @@
   <h4 span title="Items you've requested and are waiting for a response on">Waiting (<%= @user.currently_requesting.size %>)</h4>
   <ul>
   <% @user.currently_requesting.each do |loan|%>
-    <li>You requested '<%= link_to loan.item.name, user_item_path(loan.user.id, loan.item.id) %>' 
-      from <%= link_to loan.item.user.name, user_path(loan.item.user) %> 
-      on <%= loan.created_at.strftime("%h %d") %>
-      <% if current_user == @user %>
-        <%= button_to "Cancel Request", deny_loan_path(loan.user.id, loan.item.id)  %>
-      <% end %>
+    <% if @user == current_user %>
+      <li>You requested '<%= link_to loan.item.name, user_item_path(loan.user.id, loan.item.id) %>' 
+        from <%= link_to loan.item.user.name, user_path(loan.item.user) %> 
+        on <%= loan.created_at.strftime("%h %d") %>
+        <% if current_user == @user %>
+          <%= button_to "Cancel Request", deny_loan_path(loan.user.id, loan.item.id)  %>
+        <% end %>
+    <% end %>
     </li>
   <% end %>
   </ul>
@@ -63,7 +67,7 @@
 
 <div>
   <h4>Available Items (<%= @user.my_available_items.size %>) 
-    <%= link_to 'Add New Item', new_user_item_path(@user) %> </h4>
+  </h4>
   <ul>
   <% @user.my_available_items.each do |item|%>
     <li><%= link_to item.name, user_item_path(@user.id, item.id) %>
@@ -75,7 +79,9 @@
   </ul>
 </div>
 
-<%= link_to 'List a New Item', new_user_item_path(@user) %>
+<% if @user == current_user %>
+  <%= link_to 'List a New Item', new_user_item_path(@user) %>
+<% end %>
 
 <div>
   <h4>Memberships (<%= @user.groups.size %>)</h4>
