@@ -62,6 +62,20 @@ class User < ActiveRecord::Base
       user.save!
     end
   end
+
+  def available_to_borrow
+    # Get group ids
+    # Get users who belong to groups with those ids
+    # Get items of those users
+    group_ids = self.groups.collect(&:id)
+    item_list = []
+    Group.where("id IN (?)", group_ids).includes(:users).each do |group|
+      group.users.each do |user|
+        item_list << user.items.where(state: "available") if user != self
+      end
+    end
+    item_list.flatten.uniq
+  end
   
 end
 

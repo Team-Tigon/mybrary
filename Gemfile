@@ -50,6 +50,8 @@ gem 'state_machine'
 
 gem 'acts-as-taggable-on'
 
+gem 'will_paginate'
+
 group :test, :development do
   gem "pry-rails"
   gem "rspec-rails"
