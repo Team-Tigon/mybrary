@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Members</th>
       <th>Description</th>
     </tr>
   </thead>
@@ -11,7 +12,8 @@
   <tbody>
     <% @groups.each do |group| %>
       <tr>
-        <td><%= link_to group.name, group %> (<%= pluralize(group.memberships.size, "member") %>)</td>
+        <td><%= link_to group.name, group %> </td>
+        <td><%= pluralize(group.memberships.size, "member") %></td>
         <td><%= group.description %></td>
       </tr>
     <% end %>
