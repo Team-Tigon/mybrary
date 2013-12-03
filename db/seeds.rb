@@ -83,6 +83,9 @@ Item.create!([
   { :user_id => 1, :state => "available", :name => "The Alchemist", :description => "A fantastic fable and 2-hour read about following your dream", :url => "http://www.amazon.com/The-Alchemist-Paulo-Coelho/dp/B007Y9BHPW/ref=sr_1_9?ie=UTF8&qid=1385582581&sr=8-9&keywords=the+alchemist", :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
   { :user_id => 1, :state => "available", :name => "Rachmaninoff Plays Rachmaninoff: 4 Piano Concertos", :description => "RCA Victor 2-Disc CD / Classical Music", :url => "http://www.amazon.com/Rachmaninoff-Plays-The-Piano-Concertos/dp/B000003FGS/ref=sr_1_1?ie=UTF8&qid=1385582665&sr=8-1&keywords=rachmaninoff", :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
   { :user_id => 1, :state => "available", :name => "Halo", :description => "Original Xbox game", :url => "http://www.amazon.com/Halo-Combat-Evolved-Xbox/dp/B00005NZ1G/ref=sr_1_10?ie=UTF8&qid=1385582850&sr=8-10&keywords=halo", :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
+  { :user_id => 1, :state => "available", :name => "Ipad Mini", :description => "Ipad mini", :url => "http://www.amazon.com/Halo-Combat-Evolved-Xbox/dp/B00005NZ1G/ref=sr_1_10?ie=UTF8&qid=1385582850&sr=8-10&keywords=halo", :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
+
+
   { :user_id => 1, :state => "available", :name => "Magic card: Krenko's Command", :description => "Red card, M13 set", :url => "http://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid=259213", :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
   { :user_id => 2, :state => "available", :name => "Beginning Ruby", :description => nil, :url => "http://www.amazon.com/Beginning-Ruby-Novice-Professional-Experts/dp/1430223634/ref=sr_1_1?ie=UTF8&qid=1385583470&sr=8-1&keywords=beginning+ruby", :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
   { :user_id => 2, :state => "available", :name => "Professional Javascript for Web Developers", :description => nil, :url => "http://www.amazon.com/Professional-JavaScript-Developers-Nicholas-Zakas-ebook/dp/B006PW2URI/ref=sr_1_1?s=books&ie=UTF8&qid=1385583999&sr=1-1&keywords=professional+javascript", :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
@@ -92,6 +95,11 @@ Item.create!([
   { :user_id => 3, :state => "available", :name => "Justin Timberlake - the 20/20 experience", :description => nil, :url => "http://www.amazon.com/Justin-Timberlake-20-Experience-Songbook-ebook/dp/B00GWKFJQW/ref=sr_1_1?s=books&ie=UTF8&qid=1385584926&sr=1-1&keywords=justin+timberlake", :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
   { :user_id => 3, :state => "available", :name => "Warcraft III Battle Chest", :description => "PC", :url => "http://www.amazon.com/Warcraft-III-Battle-Chest-PC-Mac/dp/B00009ECGK/ref=sr_1_1?ie=UTF8&qid=1385584978&sr=8-1&keywords=warcraft", :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
   { :user_id => 3, :state => "available", :name => "My best Magic Card Set", :description => nil, :url => nil, :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
+  
+  { :user_id => 3, :state => "available", :name => "Broadsword", :description => "josh's weapon of choice", :url => nil, :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
+  { :user_id => 3, :state => "available", :name => "Mac pro 2011", :description => "macbook pro 15 inches", :url => nil, :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
+
+
   { :user_id => 3, :state => "available", :name => "Hammer", :description => "Just a plain old hammer", :url => nil, :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
   { :user_id => 2, :state => "available", :name => "Basketball", :description => "NBA Authentic Game Ball", :url => nil, :created_at => "2013-12-03 19:56:56", :updated_at => "2013-12-03 19:56:56" },
   { :user_id => 2, :state => "available", :name => "Bowflex Dumbbells", :description => "adjustable dumbbells", :url => nil, :created_at => "2013-12-03 19:58:59", :updated_at => "2013-12-03 19:58:59" },
@@ -121,7 +129,9 @@ Membership.create!([
   { :user_id => 1, :group_id => 1, :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
   { :user_id => 2, :group_id => 1, :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
   { :user_id => 3, :group_id => 1, :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
-  { :user_id => 1, :group_id => 2, :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" }
+  { :user_id => 1, :group_id => 2, :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
+  { :user_id => 3, :group_id => 2, :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" }
+ 
 ])
 
 
@@ -129,7 +139,10 @@ Membership.create!([
 User.create!([
   { :name => "Sam Yang", :provider => "facebook", :uid => "793818775", :oauth_token => "CAAIDKdWrzEMBAIgyH4XWea8ZCC0mHZBdRa2PUxzOupMefZAf9DrjKZAqZAUfbW4t8onB6Qje90MPfgHNujyNYDx85i9cjBwyZB0fQ6zAQgrCzbcyaVRwNZCfLSM2syFe4nKruHf9ZBxcZBwzy8XEQsw7f6ociuCmMVOJ5anKM4r2FGtimzoZB5TSqWpVLflQGQbNA9dVI34QtLWAZDZD", :oauth_expires_at => nil, :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
   { :name => "James Tong", :provider => "facebook", :uid => "1351920338", :oauth_token => "CAAIDKdWrzEMBAEI09m2qD6j1Hs5V2xQCDi9tvDa5q0XTdZA5C88TwuML4I6U8HjKwoZAiSV5GUwg5EH5RyYl7ssTx8iPRiACZCeE9COi4iBvmDPwttHyh3jPTFjQIsZBMUwTIlXQy5AJ0vx0P9J9aY5zbz56qIKMgDRxyY6FgoQthOZA1MVR4tguZA7HNe5CAZD", :oauth_expires_at => nil, :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
-  { :name => "Josh Scaglione", :provider => "facebook", :uid => "100003210068077", :oauth_token => "CAAIDKdWrzEMBAINP6UCfRhYZAAu5OeZCf74L3Ua4HkbClQbnnxo7UDVbY3rIkJq9nCH9kfhN3Rl7wIoTd7nZC9WtFHUuXfHtSh3XkR83bgvZCHQt0Sn4RYfZA3QZAXJUlwWFE1tYkRXzOnwBIbd0gzr9c68cNgcgshgqy7hSXvV8gIAOdr9cYCw3b4S0tzda7Si1YjSBNLNQZDZD", :oauth_expires_at => nil, :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" }
+  { :name => "Josh Scaglione", :provider => "facebook", :uid => "100003210068077", :oauth_token => "CAAIDKdWrzEMBAINP6UCfRhYZAAu5OeZCf74L3Ua4HkbClQbnnxo7UDVbY3rIkJq9nCH9kfhN3Rl7wIoTd7nZC9WtFHUuXfHtSh3XkR83bgvZCHQt0Sn4RYfZA3QZAXJUlwWFE1tYkRXzOnwBIbd0gzr9c68cNgcgshgqy7hSXvV8gIAOdr9cYCw3b4S0tzda7Si1YjSBNLNQZDZD", :oauth_expires_at => nil, :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
+  { :name => "Theo Vera"},
+  { :name => "Alex Chiu"},
+  { :name => "Avi Flombaum"}
 ])
 
 
