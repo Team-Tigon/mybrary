@@ -54,6 +54,16 @@
 .table-hover > tbody > tr:hover > th {
   background-color: lightblue;
 }
+
+a.btn:visited {
+  color: white;
+}
+
+.table th, .table td { 
+     border-left: none; 
+     border-right: none; 
+ }
+
 /*
  * --------------------------------------------------
  * 3. Responsiveness/media queries
