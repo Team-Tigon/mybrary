@@ -5,6 +5,7 @@ Mybrary::Application.routes.draw do
     resources :items, except: [:index]
   end
 
+  
   resources :groups
 
   root 'users#index'

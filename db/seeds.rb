@@ -28,7 +28,14 @@ ActsAsTaggableOn::Tag.create!([
   { :name => "knights" },
   { :name => "cities" },
   { :name => "trivia" },
-  { :name => "game" }
+  { :name => "game" },
+  { :name => "ruby" },
+  { :name => "javascript" },
+  { :name => "music" },
+  { :name => "mp3" },
+  { :name => "daft punk" },
+  { :name => "ice" },
+  { :name => "fire" }
 ])
 
 
@@ -46,27 +53,37 @@ ActsAsTaggableOn::Tagging.create!([
   { :tag_id => 9, :taggable_id => 17, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "tags", :created_at => "2013-12-03 19:59:29" },
   { :tag_id => 10, :taggable_id => 17, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "tags", :created_at => "2013-12-03 19:59:29" },
   { :tag_id => 11, :taggable_id => 17, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "types", :created_at => "2013-12-03 19:59:29" },
-  { :tag_id => 12, :taggable_id => 18, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "tags", :created_at => "2013-12-03 19:59:58" },
-  { :tag_id => 13, :taggable_id => 18, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "tags", :created_at => "2013-12-03 19:59:58" },
   { :tag_id => 11, :taggable_id => 18, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "types", :created_at => "2013-12-03 19:59:58" },
-  { :tag_id => 14, :taggable_id => 19, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "tags", :created_at => "2013-12-03 20:00:22" },
-  { :tag_id => 15, :taggable_id => 19, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "tags", :created_at => "2013-12-03 20:00:22" },
-  { :tag_id => 16, :taggable_id => 19, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "types", :created_at => "2013-12-03 20:00:22" },
-  { :tag_id => 17, :taggable_id => 20, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "tags", :created_at => "2013-12-03 20:00:48" },
-  { :tag_id => 18, :taggable_id => 20, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "tags", :created_at => "2013-12-03 20:00:48" },
-  { :tag_id => 16, :taggable_id => 20, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "types", :created_at => "2013-12-03 20:00:48" },
-  { :tag_id => 19, :taggable_id => 21, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "tags", :created_at => "2013-12-03 20:01:44" },
-  { :tag_id => 20, :taggable_id => 21, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "tags", :created_at => "2013-12-03 20:01:44" },
-  { :tag_id => 21, :taggable_id => 21, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "tags", :created_at => "2013-12-03 20:01:44" },
-  { :tag_id => 22, :taggable_id => 21, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "types", :created_at => "2013-12-03 20:01:44" },
   { :tag_id => 14, :taggable_id => 22, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "tags", :created_at => "2013-12-03 20:02:27" },
   { :tag_id => 15, :taggable_id => 22, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "tags", :created_at => "2013-12-03 20:02:27" },
-  { :tag_id => 23, :taggable_id => 22, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "tags", :created_at => "2013-12-03 20:02:27" },
   { :tag_id => 24, :taggable_id => 22, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "tags", :created_at => "2013-12-03 20:02:27" },
-  { :tag_id => 11, :taggable_id => 22, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "types", :created_at => "2013-12-03 20:02:27" },
-  { :tag_id => 25, :taggable_id => 23, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "tags", :created_at => "2013-12-03 20:03:09" },
-  { :tag_id => 26, :taggable_id => 23, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "tags", :created_at => "2013-12-03 20:03:09" },
-  { :tag_id => 16, :taggable_id => 23, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "types", :created_at => "2013-12-03 20:03:09" }
+  { :tag_id => 16, :taggable_id => 23, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "types", :created_at => "2013-12-03 20:03:09" },
+  { :tag_id => 27, :taggable_id => 7, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "tags", :created_at => "2013-12-03 21:02:32" },
+  { :tag_id => 11, :taggable_id => 7, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "tags", :created_at => "2013-12-03 21:02:32" },
+  { :tag_id => 11, :taggable_id => 7, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "types", :created_at => "2013-12-03 21:02:32" },
+  { :tag_id => 28, :taggable_id => 8, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "tags", :created_at => "2013-12-03 21:02:43" },
+  { :tag_id => 11, :taggable_id => 8, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "tags", :created_at => "2013-12-03 21:02:43" },
+  { :tag_id => 11, :taggable_id => 8, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "types", :created_at => "2013-12-03 21:02:43" },
+  { :tag_id => 29, :taggable_id => 9, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "tags", :created_at => "2013-12-03 21:02:59" },
+  { :tag_id => 30, :taggable_id => 9, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "tags", :created_at => "2013-12-03 21:02:59" },
+  { :tag_id => 31, :taggable_id => 9, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "tags", :created_at => "2013-12-03 21:02:59" },
+  { :tag_id => 11, :taggable_id => 9, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "types", :created_at => "2013-12-03 21:02:59" },
+  { :tag_id => 1, :taggable_id => 18, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "tags", :created_at => "2013-12-03 21:03:25" },
+  { :tag_id => 5, :taggable_id => 19, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "tags", :created_at => "2013-12-03 21:04:09" },
+  { :tag_id => 11, :taggable_id => 19, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "types", :created_at => "2013-12-03 21:04:09" },
+  { :tag_id => 7, :taggable_id => 20, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "tags", :created_at => "2013-12-03 21:04:26" },
+  { :tag_id => 11, :taggable_id => 20, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "tags", :created_at => "2013-12-03 21:04:26" },
+  { :tag_id => 11, :taggable_id => 20, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "types", :created_at => "2013-12-03 21:04:26" },
+  { :tag_id => 12, :taggable_id => 21, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "tags", :created_at => "2013-12-03 21:04:48" },
+  { :tag_id => 32, :taggable_id => 21, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "tags", :created_at => "2013-12-03 21:04:48" },
+  { :tag_id => 33, :taggable_id => 21, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "tags", :created_at => "2013-12-03 21:04:48" },
+  { :tag_id => 11, :taggable_id => 21, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "types", :created_at => "2013-12-03 21:04:48" },
+  { :tag_id => 11, :taggable_id => 22, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "types", :created_at => "2013-12-03 21:05:12" },
+  { :tag_id => 17, :taggable_id => 23, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "tags", :created_at => "2013-12-03 21:05:47" },
+  { :tag_id => 19, :taggable_id => 24, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "tags", :created_at => "2013-12-03 21:05:59" },
+  { :tag_id => 20, :taggable_id => 24, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "tags", :created_at => "2013-12-03 21:05:59" },
+  { :tag_id => 21, :taggable_id => 24, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "tags", :created_at => "2013-12-03 21:05:59" },
+  { :tag_id => 11, :taggable_id => 24, :taggable_type => "Item", :tagger_id => nil, :tagger_type => nil, :context => "types", :created_at => "2013-12-03 21:05:59" }
 ])
 
 
@@ -84,30 +101,25 @@ Item.create!([
   { :user_id => 1, :state => "available", :name => "Rachmaninoff Plays Rachmaninoff: 4 Piano Concertos", :description => "RCA Victor 2-Disc CD / Classical Music", :url => "http://www.amazon.com/Rachmaninoff-Plays-The-Piano-Concertos/dp/B000003FGS/ref=sr_1_1?ie=UTF8&qid=1385582665&sr=8-1&keywords=rachmaninoff", :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
   { :user_id => 1, :state => "available", :name => "Halo", :description => "Original Xbox game", :url => "http://www.amazon.com/Halo-Combat-Evolved-Xbox/dp/B00005NZ1G/ref=sr_1_10?ie=UTF8&qid=1385582850&sr=8-10&keywords=halo", :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
   { :user_id => 1, :state => "available", :name => "Ipad Mini", :description => "Ipad mini", :url => "http://www.amazon.com/Halo-Combat-Evolved-Xbox/dp/B00005NZ1G/ref=sr_1_10?ie=UTF8&qid=1385582850&sr=8-10&keywords=halo", :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
-
-
   { :user_id => 1, :state => "available", :name => "Magic card: Krenko's Command", :description => "Red card, M13 set", :url => "http://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid=259213", :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
-  { :user_id => 2, :state => "available", :name => "Beginning Ruby", :description => nil, :url => "http://www.amazon.com/Beginning-Ruby-Novice-Professional-Experts/dp/1430223634/ref=sr_1_1?ie=UTF8&qid=1385583470&sr=8-1&keywords=beginning+ruby", :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
-  { :user_id => 2, :state => "available", :name => "Professional Javascript for Web Developers", :description => nil, :url => "http://www.amazon.com/Professional-JavaScript-Developers-Nicholas-Zakas-ebook/dp/B006PW2URI/ref=sr_1_1?s=books&ie=UTF8&qid=1385583999&sr=1-1&keywords=professional+javascript", :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
-  { :user_id => 2, :state => "available", :name => "Get Lucky - Daft Punk", :description => "MP3", :url => nil, :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
+  { :user_id => 2, :state => "available", :name => "Beginning Ruby", :description => "Enter Description", :url => "http://www.amazon.com/Beginning-Ruby-Novice-Professional-Experts/dp/1430223634/ref=sr_1_1?ie=UTF8&qid=1385583470&sr=8-1&keywords=beginning+ruby", :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 21:02:32" },
+  { :user_id => 2, :state => "available", :name => "Professional Javascript for Web Developers", :description => "Enter Description", :url => "http://www.amazon.com/Professional-JavaScript-Developers-Nicholas-Zakas-ebook/dp/B006PW2URI/ref=sr_1_1?s=books&ie=UTF8&qid=1385583999&sr=1-1&keywords=professional+javascript", :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 21:02:43" },
+  { :user_id => 2, :state => "available", :name => "Get Lucky - Daft Punk", :description => "MP3", :url => nil, :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 21:02:59" },
   { :user_id => 3, :state => "available", :name => "Edward Scissorhands", :description => "Josh's copy of DVD", :url => "http://www.amazon.com/Edward-Scissorhands-Anniversary-Johnny-Depp/dp/B0000AC8LI/ref=sr_1_2?ie=UTF8&qid=1385581987&sr=8-2&keywords=edward+scissorhands", :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
   { :user_id => 3, :state => "available", :name => "The Rails 4 Way", :description => nil, :url => "http://www.amazon.com/Rails-Way-Addison-Wesley-Professional-Ruby/dp/0321944275/ref=sr_1_1?s=books&ie=UTF8&qid=1385584902&sr=1-1&keywords=rails+4+way", :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
   { :user_id => 3, :state => "available", :name => "Justin Timberlake - the 20/20 experience", :description => nil, :url => "http://www.amazon.com/Justin-Timberlake-20-Experience-Songbook-ebook/dp/B00GWKFJQW/ref=sr_1_1?s=books&ie=UTF8&qid=1385584926&sr=1-1&keywords=justin+timberlake", :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
   { :user_id => 3, :state => "available", :name => "Warcraft III Battle Chest", :description => "PC", :url => "http://www.amazon.com/Warcraft-III-Battle-Chest-PC-Mac/dp/B00009ECGK/ref=sr_1_1?ie=UTF8&qid=1385584978&sr=8-1&keywords=warcraft", :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
   { :user_id => 3, :state => "available", :name => "My best Magic Card Set", :description => nil, :url => nil, :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
-  
   { :user_id => 3, :state => "available", :name => "Broadsword", :description => "josh's weapon of choice", :url => nil, :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
   { :user_id => 3, :state => "available", :name => "Mac pro 2011", :description => "macbook pro 15 inches", :url => nil, :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
-
-
   { :user_id => 3, :state => "available", :name => "Hammer", :description => "Just a plain old hammer", :url => nil, :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
-  { :user_id => 2, :state => "available", :name => "Basketball", :description => "NBA Authentic Game Ball", :url => nil, :created_at => "2013-12-03 19:56:56", :updated_at => "2013-12-03 19:56:56" },
-  { :user_id => 2, :state => "available", :name => "Bowflex Dumbbells", :description => "adjustable dumbbells", :url => nil, :created_at => "2013-12-03 19:58:59", :updated_at => "2013-12-03 19:58:59" },
-  { :user_id => 2, :state => "available", :name => "Harry Potter Goblet of Fire", :description => "4th book of Harry Potter. The best one of the series", :url => nil, :created_at => "2013-12-03 19:59:29", :updated_at => "2013-12-03 19:59:29" },
-  { :user_id => 2, :state => "available", :name => "Song of Ice and Fire", :description => "Song of Ice and Fire series ", :url => nil, :created_at => "2013-12-03 19:59:58", :updated_at => "2013-12-03 19:59:58" },
-  { :user_id => 2, :state => "available", :name => "Settlers of Catan", :description => "original catan game", :url => nil, :created_at => "2013-12-03 20:00:22", :updated_at => "2013-12-03 20:00:22" },
-  { :user_id => 2, :state => "available", :name => "Nice Chess Set", :description => "My nice chess set. challenge me!", :url => nil, :created_at => "2013-12-03 20:00:48", :updated_at => "2013-12-03 20:00:48" },
-  { :user_id => 2, :state => "available", :name => "Ice Cream Maker", :description => "Ice cream machine", :url => nil, :created_at => "2013-12-03 20:01:44", :updated_at => "2013-12-03 20:01:44" },
+  { :user_id => 2, :state => "available", :name => "Basketball", :description => "NBA Authentic Game Ball", :url => nil, :created_at => "2013-12-03 19:56:56", :updated_at => "2013-12-03 21:03:25" },
+  { :user_id => 2, :state => "available", :name => "Bowflex Dumbbells", :description => "adjustable dumbbells", :url => nil, :created_at => "2013-12-03 19:58:59", :updated_at => "2013-12-03 21:04:09" },
+  { :user_id => 2, :state => "available", :name => "Harry Potter Goblet of Fire", :description => "4th book of Harry Potter. The best one of the series", :url => nil, :created_at => "2013-12-03 19:59:29", :updated_at => "2013-12-03 21:04:26" },
+  { :user_id => 2, :state => "available", :name => "Song of Ice and Fire", :description => "Song of Ice and Fire series ", :url => nil, :created_at => "2013-12-03 19:59:58", :updated_at => "2013-12-03 21:04:48" },
+  { :user_id => 2, :state => "available", :name => "Settlers of Catan", :description => "original catan game", :url => nil, :created_at => "2013-12-03 20:00:22", :updated_at => "2013-12-03 21:05:12" },
+  { :user_id => 2, :state => "available", :name => "Nice Chess Set", :description => "My nice chess set. challenge me!", :url => nil, :created_at => "2013-12-03 20:00:48", :updated_at => "2013-12-03 21:05:47" },
+  { :user_id => 2, :state => "available", :name => "Ice Cream Maker", :description => "Ice cream machine", :url => nil, :created_at => "2013-12-03 20:01:44", :updated_at => "2013-12-03 21:05:59" },
   { :user_id => 2, :state => "available", :name => "Settlers of Catan Knights and Cities Expansion", :description => "Knights and cities expansion for settlers of catan", :url => nil, :created_at => "2013-12-03 20:02:27", :updated_at => "2013-12-03 20:02:27" },
   { :user_id => 2, :state => "available", :name => "Bezzerwizzer", :description => "trivia board game!", :url => nil, :created_at => "2013-12-03 20:03:09", :updated_at => "2013-12-03 20:03:09" }
 ])
@@ -131,7 +143,6 @@ Membership.create!([
   { :user_id => 3, :group_id => 1, :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
   { :user_id => 1, :group_id => 2, :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
   { :user_id => 3, :group_id => 2, :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" }
- 
 ])
 
 
@@ -140,9 +151,9 @@ User.create!([
   { :name => "Sam Yang", :provider => "facebook", :uid => "793818775", :oauth_token => "CAAIDKdWrzEMBAIgyH4XWea8ZCC0mHZBdRa2PUxzOupMefZAf9DrjKZAqZAUfbW4t8onB6Qje90MPfgHNujyNYDx85i9cjBwyZB0fQ6zAQgrCzbcyaVRwNZCfLSM2syFe4nKruHf9ZBxcZBwzy8XEQsw7f6ociuCmMVOJ5anKM4r2FGtimzoZB5TSqWpVLflQGQbNA9dVI34QtLWAZDZD", :oauth_expires_at => nil, :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
   { :name => "James Tong", :provider => "facebook", :uid => "1351920338", :oauth_token => "CAAIDKdWrzEMBAEI09m2qD6j1Hs5V2xQCDi9tvDa5q0XTdZA5C88TwuML4I6U8HjKwoZAiSV5GUwg5EH5RyYl7ssTx8iPRiACZCeE9COi4iBvmDPwttHyh3jPTFjQIsZBMUwTIlXQy5AJ0vx0P9J9aY5zbz56qIKMgDRxyY6FgoQthOZA1MVR4tguZA7HNe5CAZD", :oauth_expires_at => nil, :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
   { :name => "Josh Scaglione", :provider => "facebook", :uid => "100003210068077", :oauth_token => "CAAIDKdWrzEMBAINP6UCfRhYZAAu5OeZCf74L3Ua4HkbClQbnnxo7UDVbY3rIkJq9nCH9kfhN3Rl7wIoTd7nZC9WtFHUuXfHtSh3XkR83bgvZCHQt0Sn4RYfZA3QZAXJUlwWFE1tYkRXzOnwBIbd0gzr9c68cNgcgshgqy7hSXvV8gIAOdr9cYCw3b4S0tzda7Si1YjSBNLNQZDZD", :oauth_expires_at => nil, :created_at => "2013-12-03 19:55:10", :updated_at => "2013-12-03 19:55:10" },
-  { :name => "Theo Vera"},
-  { :name => "Alex Chiu"},
-  { :name => "Avi Flombaum"}
+  { :name => "Theo Vera", :provider => nil, :uid => nil, :oauth_token => nil, :oauth_expires_at => nil, :created_at => "2013-12-03 20:34:08", :updated_at => "2013-12-03 20:34:08" },
+  { :name => "Alex Chiu", :provider => nil, :uid => nil, :oauth_token => nil, :oauth_expires_at => nil, :created_at => "2013-12-03 20:34:08", :updated_at => "2013-12-03 20:34:08" },
+  { :name => "Avi Flombaum", :provider => nil, :uid => nil, :oauth_token => nil, :oauth_expires_at => nil, :created_at => "2013-12-03 20:34:08", :updated_at => "2013-12-03 20:34:08" }
 ])
 
 
