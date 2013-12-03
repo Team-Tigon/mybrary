@@ -2,6 +2,20 @@
 <h3><%= @item.name %> - <%= @item.type_list %></h3>
 <h4>Tags: <%= @item.tag_list %></h4>
 
+<h4> History: </h4>
+<% @item.loans.each do |loan| %>
+  <ol>
+    <% if loan.borrowed_on %>
+      <li><%= "Borrowed on #{loan.borrowed_on.strftime("%h %d")}" %></li>
+    <% end %>
+    <% if loan.returned_on %>
+      <li><%= "Returned on #{loan.returned_on.strftime("%h %d")}" %></li>
+    <% end %>
+  </ol>
+<% end %>
+
+<h4>  Description:      </h4>
+<div><%= @item.description  %></div>
 
 <%= link_to 'Edit', edit_user_item_path(@user, @item) %> |
 <%= link_to 'Back', user_path(@user) %>
