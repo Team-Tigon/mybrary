@@ -4,12 +4,14 @@
 
 <h4> History: </h4>
 <% @item.loans.each do |loan| %>
-  <li>
-    <%= "Borrowed on #{loan.borrowed_on}" if loan.borrowed_on %>
-  </li>
-  <li>
-    <%= "Returned on #{loan.returned_on}" if loan.returned_on %>
-  </li>
+  <ol>
+    <% if loan.borrowed_on %>
+      <li><%= "Borrowed on #{loan.borrowed_on.strftime("%h %d")}" %></li>
+    <% end %>
+    <% if loan.returned_on %>
+      <li><%= "Returned on #{loan.returned_on.strftime("%h %d")}" %></li>
+    <% end %>
+  </ol>
 <% end %>
 
 <h4>  Description:      </h4>
