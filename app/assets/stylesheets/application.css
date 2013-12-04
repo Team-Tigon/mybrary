@@ -25,6 +25,11 @@ a.group-link:visited {
   color: white;
 }
 
+.btn-inline {
+  float: left;
+  margin-right: 3px;
+}
+
 .group-box {
   color: #ffffff;
   padding-bottom: 2px;
@@ -48,5 +53,13 @@ a.group-link:visited {
 }
 
 .navbar-formpad {
-  padding-top: 15px;
+  padding-top: 12px;
+  width: 260px; 
+  display: block; 
+  float: left;
+}
+
+.table-hover > tbody > tr:hover > td,
+.table-hover > tbody > tr:hover > th {
+  background-color: lightblue;
 }
