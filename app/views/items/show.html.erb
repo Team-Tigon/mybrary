@@ -17,7 +17,11 @@
 <h4>  Description:      </h4>
 <div><%= @item.description  %></div>
 
-<br>  
+<br>
+<% if current_user && current_user != @user && @item.available? %>
+    <%= button_to "Request to Borrow", request_loan_path(current_user, @item.id), :class => "btn btn-primary btn-sm" %> 
+<% end %>
+<br>
 <% if current_user == @user %>
   <%= link_to 'Edit', edit_user_item_path(@user, @item) %> |
 <% end %>
