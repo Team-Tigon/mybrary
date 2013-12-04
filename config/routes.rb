@@ -7,8 +7,8 @@ Mybrary::Application.routes.draw do
 
   
   resources :groups
-
-  root 'users#index'
+  root 'users#splash'
+  
 
   get 'items/search' => 'items#search_results', as: :search_item
 
