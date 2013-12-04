@@ -59,7 +59,12 @@ a.btn:visited {
   color: white;
 }
 
-.table th, .table td { 
+.btn-inline {
+  float: left;
+  margin-right: 3px;
+}
+
+.table { 
      border-left: none; 
      border-right: none; 
  }
