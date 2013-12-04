@@ -26,6 +26,17 @@
       
       <!--user menu-->
       <div class="btn-group user-menu pull-right navbar-padbar">
+        <div class="navbar-formpad">
+          <%= form_tag(search_item_path, method: "get") do %>
+            <div class="input-group input-group-md">
+              <%= text_field_tag("search_string", nil, placeholder: "search items or tags", class: "form-control") %>
+              <span class="input-group-btn">
+                <%= submit_tag("Go!", class: "btn btn-primary btn-md") %>
+              </span>
+            </div>
+          <% end %>
+        </div>
+
         <% if current_user %>
           <%= link_to current_user.name, current_user, class: "btn btn-primary signup", data: {toggle: "modal"} %>
           <%= link_to "Sign out", signout_path, id: "sign_out", class: "btn btn-primary signup" %>
@@ -55,21 +66,7 @@
                 <li role="presentation"><a role="menuitem" href="contact.htm" tabindex="-1" class="menu-item">Contact</a></li>
               </ul>
             </li>  -->
-
-          <div class="navbar-formpad">
-              <li>
-              <%= form_tag(search_item_path, method: "get") do %>
-                <div class="input-group input-group-sm">
-                  <%= text_field_tag("search_string", nil, placeholder: "search items or tags", class: "form-control") %>
-                  <span class="input-group-btn">
-                    <%= submit_tag("Go!", class: "btn btn-primary btn-xs") %>
-                  </span>
-                </div>
-              <% end %>
-              </li>
-            <% end %>  
-          </div>
-
+          <% end %>           
         </ul>
       </div>
       <!--/.navbar-collapse --> 

@@ -30,14 +30,19 @@
           <% end %>
         </td>
         <td>on <%= item.loans.last.created_at.strftime("%h %d") %></td>
+<!-- Loops the <td> line so that both buttons fit on one line -->
+        <% if current_user == @user %>
+          <td style="width: 100px;">
+          <%= button_to "Lent", approve_loan_path(@user.id, item.id), class: "btn btn-success btn-xs btn-inline" %>
+          <%= button_to "Deny", deny_loan_path(@user.id, item.id), class: "btn btn-danger btn-xs btn-inline" %>
+        <% elsif current_user == item.loans.last.user %>
+          <td>
+          <%= button_to "Cancel", deny_loan_path(@user.id, item.id), class: "btn btn-warning btn-xs btn-inline" %>
+        <% else %>
         <td>
-          <% if current_user == @user %>
-            <div><%= button_to "Loaned", approve_loan_path(@user.id, item.id), class: "btn btn-primary btn-xs btn-inline" %></div>
-            <div><%= button_to "Deny", deny_loan_path(@user.id, item.id), class: "btn btn-warning btn-xs btn-inline" %></div>
-          <% elsif current_user == item.loans.last.user %>
-            <%= button_to "Cancel", deny_loan_path(@user.id, item.id), class: "btn btn-primary btn-xs btn-inline" %>
-          <% end %>
+        <% end %>
         </td>
+<!-- Ends loop -->
       </tr>
     <% end %>
     <% @user.my_loaned_items.each do |item| %>
@@ -50,7 +55,7 @@
         </td>
         <td>on <%= item.loans.last.created_at.strftime("%h %d") %></td>
         <td><% if current_user == @user %>
-          <%= button_to "Returned", return_loan_path(@user.id, item.id), data: { confirm: 'Are you sure? This cannot be undone.' }, class: "btn btn-primary btn-xs btn-inline" %>
+          <%= button_to "Returned", return_loan_path(@user.id, item.id), data: { confirm: 'Are you sure? This marks your item as Available again and cannot be undone.' }, class: "btn btn-primary btn-xs btn-inline" %>
           <% end %>
         </td>
       </tr>
@@ -106,7 +111,7 @@
           <td>from <%= link_to loan.item.user.name, user_path(loan.item.user) %></td>
           <td>since <%= loan.created_at.strftime("%h %d") %></td>
           <td><% if current_user == @user %>
-            <%= button_to "Cancel", deny_loan_path(loan.user.id, loan.item.id), class: "btn btn-primary btn-xs btn-inline" %>
+            <%= button_to "Cancel", deny_loan_path(loan.user.id, loan.item.id), class: "btn btn-warning btn-xs btn-inline" %>
             <% end %>
           </td>
         </tr>
