@@ -1,25 +1,24 @@
-<h1>Listing items</h1>
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
 
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+    <h2>Name Matches</h2>
 
-  <tbody>
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= link_to item.name, user_item_path(@user, item) %></td>
-        <td><%= link_to 'Edit', edit_user_item_path(@user, item) %></td>
-        <td><%= link_to 'Destroy', [@user, item], confirm: 'Are you sure?', method: :delete %></td>
-      </tr>
+
+    <% @name_matches.each do |item| %>
+      <%= link_to item.name, user_item_path(item.user_id, item.id) %>
+      <br>
     <% end %>
-  </tbody>
-</table>
 
-<br>
+    <br>
 
-<%= link_to 'New item', new_user_item_path %>
+    <h2>Tag Matches</h2>
+
+    <% @tag_matches.each do |item| %>
+      <%= link_to item.name, user_item_path(item.user_id, item.id) %>
+      <br>
+    <% end %>
+
+  </div>
+  <div class="col-md-1"></div>
+</div>

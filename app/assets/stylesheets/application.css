@@ -46,3 +46,7 @@ a.group-link:visited {
 .navbar-padbar {
   padding-top: 10px;
 }
+
+.navbar-formpad {
+  padding-top: 15px;
+}
