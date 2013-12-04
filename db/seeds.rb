@@ -499,13 +499,13 @@ Membership.create!([
   { :user_id => 1, :group_id => 1, :created_at => "2013-12-04 20:08:07", :updated_at => "2013-12-04 20:08:12", :state => "member" },
   { :user_id => 2, :group_id => 2, :created_at => "2013-12-04 21:05:57", :updated_at => "2013-12-04 21:05:57", :state => "owner" },
   { :user_id => 1, :group_id => 2, :created_at => "2013-12-04 21:45:03", :updated_at => "2013-12-04 22:14:59", :state => "member" },
-  { :user_id => 3, :group_id => 4, :created_at => "2013-12-04 21:59:56", :updated_at => "2013-12-04 21:59:56", :state => "owner" },
-  { :user_id => 2, :group_id => 4, :created_at => "2013-12-04 22:06:49", :updated_at => "2013-12-04 22:06:59", :state => "member" },
-  { :user_id => 1, :group_id => 4, :created_at => "2013-12-04 22:15:57", :updated_at => "2013-12-04 22:15:57", :state => "pending" },
+  { :user_id => 3, :group_id => 3, :created_at => "2013-12-04 21:59:56", :updated_at => "2013-12-04 21:59:56", :state => "owner" },
+  { :user_id => 2, :group_id => 3, :created_at => "2013-12-04 22:06:49", :updated_at => "2013-12-04 22:06:59", :state => "member" },
+  { :user_id => 1, :group_id => 3, :created_at => "2013-12-04 22:15:57", :updated_at => "2013-12-04 22:15:57", :state => "pending" },
   { :user_id => 3, :group_id => 2, :created_at => "2013-12-04 22:18:51", :updated_at => "2013-12-04 22:18:51", :state => "pending" },
-  { :user_id => 1, :group_id => 5, :created_at => "2013-12-04 22:22:25", :updated_at => "2013-12-04 22:22:25", :state => "owner" },
-  { :user_id => 3, :group_id => 5, :created_at => "2013-12-04 22:22:33", :updated_at => "2013-12-04 22:25:07", :state => "member" },
-  { :user_id => 2, :group_id => 5, :created_at => "2013-12-04 22:23:08", :updated_at => "2013-12-04 22:23:08", :state => "pending" }
+  { :user_id => 1, :group_id => 4, :created_at => "2013-12-04 22:22:25", :updated_at => "2013-12-04 22:22:25", :state => "owner" },
+  { :user_id => 3, :group_id => 4, :created_at => "2013-12-04 22:22:33", :updated_at => "2013-12-04 22:25:07", :state => "member" },
+  { :user_id => 2, :group_id => 4, :created_at => "2013-12-04 22:23:08", :updated_at => "2013-12-04 22:23:08", :state => "pending" }
 ])
 
 
