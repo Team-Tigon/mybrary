@@ -72,8 +72,7 @@ class ItemsController < ApplicationController
 
 
   def search_results
-    @name_matches = current_user.available_to_borrow(params[:search_string])
-    @tag_matches = Item.tagged_with(params[:search_string])
+    @results =  current_user.search_items(params[:search_string])
     render action: 'index'
   end
 

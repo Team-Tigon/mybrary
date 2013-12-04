@@ -15,7 +15,10 @@
       <% if !(current_user.groups.include?(@group)) %>
         <%= button_to 'Request to join this group', join_group_path(@group.id, current_user.id) %>
       <% else %>
-        <%= button_to "#{current_user.group_membership(@group).state == "pending" ? "Withdraw join request" : "Leave this group"}", leave_group_path(@group.id, current_user.id), data: { confirm: "Are you sure? #{'You are the last member. If you leave the group will be deleted.' if @group.memberships.size == 1}" } %>
+        <%= button_to "#{current_user.group_membership(@group).state == "pending" ? "Withdraw join request" : "Leave this group"}", leave_group_path(@group.id, current_user.id), data: { confirm: "Are you sure? #{'You are the last member. If you leave the group will be disbanded.' if @group.memberships.size == 1}" }, :class => "btn btn-danger" %>
+          <% if current_user.group_admin?(@group) %>
+            <%= link_to 'Edit Group', edit_group_path(@group), :class => "btn btn-primary btn-md" %>
+          <% end %>
       <% end %>
     <% end %>
   </div>
@@ -25,13 +28,14 @@
   <div class="col-md-12">
 
     <% if current_user.group_member?(@group) && current_user.group_admin?(@group) %>
+
       <h4>Pending Members (<%= @pending.size %>):</h4>
       <ul>
         <% @pending.each do |m| %>
           <li>
             <%= link_to m.user.name, m.user %> (<%= pluralize( m.user.items.length, "item") %>)
-            <%= button_to "Approve Membership", approve_member_path(@group.id, m.user_id) %>
-            <%= button_to "Deny Membership", deny_member_path(@group.id, m.user_id) %>
+            <%= button_to "Approve Membership", approve_member_path(@group.id, m.user_id), :class => "btn btn-success btn-small" %>
+            <%= button_to "Deny Membership", deny_member_path(@group.id, m.user_id), :class => "btn btn-danger btn-small" %>
           </li>
         <% end %>
       </ul>
@@ -70,5 +74,3 @@
     <% end %>
   </div>
 </div>
-
-<%= link_to 'Edit', edit_group_path(@group) %>
