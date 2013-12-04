@@ -46,24 +46,30 @@
           <% if current_user %>
             <li><a href="<%= users_path %>" class="menu-item">Admin</a></li>
               <li><a href="<%= groups_path %>" class="menu-item">Groups</a></li>
-            <li class="dropdown">
+        <!-- 'About' with Dropdown Menu -->
+<!--             <li class="dropdown">
               <a href="about.htm" class="dropdown-toggle" id="about-drop" data-toggle="dropdown">About +</a> 
-              <!-- Dropdown Menu -->
               <ul class="dropdown-menu" role="menu" aria-labelledby="about-drop">
                 <li role="presentation"><a role="menuitem" href="about.htm" tabindex="-1" class="menu-item">About Us</a></li>
                 <li role="presentation"><a role="menuitem" href="team.htm" tabindex="-1" class="menu-item">Our Team</a></li>
                 <li role="presentation"><a role="menuitem" href="contact.htm" tabindex="-1" class="menu-item">Contact</a></li>
               </ul>
-            </li>
-            <li>
-              <%= form_tag(search_item_path, method: "get", :class => "navbar-formpad") do %>
+            </li>  -->
+
+          <div class="navbar-formpad">
+              <li>
+              <%= form_tag(search_item_path, method: "get", role: "form") do %>
                 <div class="input-group input-group-sm">
-                  <%= text_field_tag("search_string", nil, placeholder: "search available items") %>
-                  <%= submit_tag("Search", :class => "btn btn-primary btn-xs") %>
+                  <%= text_field_tag("search_string", nil, placeholder: "search available items", class: "form-control") %>
+                  <span class="input-group-btn">
+                    <%= submit_tag("Search", :class => "btn btn-primary btn-xs") %>
+                  </span>
                 </div>
               <% end %>
-            </li>
-          <% end %>  
+              </li>
+            <% end %>  
+          </div>
+
         </ul>
       </div>
       <!--/.navbar-collapse --> 
