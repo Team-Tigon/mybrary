@@ -85,7 +85,7 @@ class User < ActiveRecord::Base
     Group.where("id IN (?)", group_ids).includes(:users).each do |group|
       group.users.each do |user|
         user_items = user.items.where(state: "available") if user != self
-        user_items = user_items.where(:name => search) if user_items && search != ""
+        user_items = user_items.where("name like ?", "%#{search}%") if user_items && search != ""
         item_list << user_items
       end
     end
