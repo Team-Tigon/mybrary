@@ -1,4 +1,4 @@
-<h1>Listing items</h1>
+<h2>Name Matches</h2>
 
 <table>
   <thead>
@@ -10,7 +10,7 @@
   </thead>
 
   <tbody>
-    <% @items.each do |item| %>
+    <% @name_matches.each do |item| %>
       <tr>
         <td><%= link_to item.name, user_item_path(@user, item) %></td>
         <td><%= link_to 'Edit', edit_user_item_path(@user, item) %></td>
@@ -22,4 +22,24 @@
 
 <br>
 
-<%= link_to 'New item', new_user_item_path %>
+<h2>Tag Matches</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @name_matches.each do |item| %>
+      <tr>
+        <td><%= link_to item.name, user_item_path(@user, item) %></td>
+        <td><%= link_to 'Edit', edit_user_item_path(@user, item) %></td>
+        <td><%= link_to 'Destroy', [@user, item], confirm: 'Are you sure?', method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -55,6 +55,14 @@
                 <li role="presentation"><a role="menuitem" href="contact.htm" tabindex="-1" class="menu-item">Contact</a></li>
               </ul>
             </li>
+            <li>
+              <%= form_tag(search_item_path, method: "get", :class => "navbar-formpad") do %>
+                <div class="input-group input-group-sm">
+                  <%= text_field_tag("search_string", nil, placeholder: "search available items") %>
+                  <%= submit_tag("Search", :class => "btn btn-primary btn-xs") %>
+                </div>
+              <% end %>
+            </li>
           <% end %>  
         </ul>
       </div>

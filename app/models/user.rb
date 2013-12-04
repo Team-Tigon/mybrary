@@ -76,7 +76,7 @@ class User < ActiveRecord::Base
   end
 
 
-  def available_to_borrow
+  def available_to_borrow(search = "")
     # Get group ids
     # Get users who belong to groups with those ids
     # Get items of those users
@@ -84,10 +84,12 @@ class User < ActiveRecord::Base
     item_list = []
     Group.where("id IN (?)", group_ids).includes(:users).each do |group|
       group.users.each do |user|
-        item_list << user.items.where(state: "available") if user != self
+        user_items = user.items.where(state: "available") if user != self
+        user_items = user_items.where(:name => search) if user_items && search != ""
+        item_list << user_items
       end
     end
-    item_list.flatten.uniq
+    item_list.flatten.uniq.compact
   end
   
 end

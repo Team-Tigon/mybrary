@@ -66,6 +66,12 @@ class ItemsController < ApplicationController
     end
   end
 
+  def search_results
+    @name_matches = current_user.available_to_borrow(params[:search_string])
+    @tag_matches = Item.tagged_with([:search_string], :on => :tags, :any => true)
+    render action: 'index'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item
@@ -79,6 +85,5 @@ class ItemsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
       params.require(:item).permit(:name, :tag_list, :type_list, :description)
-
     end
 end
