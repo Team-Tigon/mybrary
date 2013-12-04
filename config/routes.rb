@@ -7,8 +7,8 @@ Mybrary::Application.routes.draw do
 
   
   resources :groups
-
-  root 'users#index'
+  root 'users#splash'
+  
 
   post 'user/:id/requests/:item_id' => 'users#request_loan', as: :request_loan
   post 'user/:id/approves/:item_id' => 'users#approve_loan', as: :approve_loan

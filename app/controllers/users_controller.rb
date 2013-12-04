@@ -84,7 +84,7 @@ class UsersController < ApplicationController
   end
 
   def splash
-
+    render :layout => false
   end
 
   private
