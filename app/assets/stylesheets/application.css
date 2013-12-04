@@ -91,7 +91,3 @@ a.group-link:visited {
   float: left;
 }
 
-.table-hover > tbody > tr:hover > td,
-.table-hover > tbody > tr:hover > th {
-  background-color: lightblue;
-}
