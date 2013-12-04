@@ -13,11 +13,11 @@
     </p>
     <% if current_user != nil %>
       <% if !(current_user.groups.include?(@group)) %>
-        <%= button_to 'Request to join this group', join_group_path(@group.id, current_user.id) %>
+        <%= button_to 'Request to join this group', join_group_path(@group.id, current_user.id), :class => "btn btn-success btn-sm" %>
       <% else %>
-        <%= button_to "#{current_user.group_membership(@group).state == "pending" ? "Withdraw join request" : "Leave this group"}", leave_group_path(@group.id, current_user.id), data: { confirm: "Are you sure? #{'You are the last member. If you leave the group will be disbanded.' if @group.memberships.size == 1}" }, :class => "btn btn-danger" %>
+        <%= button_to "#{current_user.group_membership(@group).state == "pending" ? "Withdraw join request" : "Leave this group"}", leave_group_path(@group.id, current_user.id), data: { confirm: "Are you sure? #{'You are the last member. If you leave the group will be disbanded.' if @group.memberships.size == 1}" }, :class => "btn btn-danger btn-sm" %>
           <% if current_user.group_admin?(@group) %>
-            <%= link_to 'Edit Group', edit_group_path(@group), :class => "btn btn-primary btn-md" %>
+            <%= link_to 'Edit Group', edit_group_path(@group), :class => "btn btn-primary btn-sm" %>
           <% end %>
       <% end %>
     <% end %>
@@ -34,8 +34,8 @@
         <% @pending.each do |m| %>
           <li>
             <%= link_to m.user.name, m.user %> (<%= pluralize( m.user.items.length, "item") %>)
-            <%= button_to "Approve Membership", approve_member_path(@group.id, m.user_id), :class => "btn btn-success btn-small" %>
-            <%= button_to "Deny Membership", deny_member_path(@group.id, m.user_id), :class => "btn btn-danger btn-small" %>
+            <%= button_to "Approve", approve_member_path(@group.id, m.user_id), :class => "btn btn-success btn-sm signup" %>
+            <%= button_to "Deny", deny_member_path(@group.id, m.user_id), :class => "btn btn-danger btn-sm signup" %>
           </li>
         <% end %>
       </ul>
