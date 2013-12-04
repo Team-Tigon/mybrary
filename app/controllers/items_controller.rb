@@ -15,7 +15,11 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
-    @item = @user.items.find(params[:id])
+    if current_user == @user
+      render action: "edit"
+    else
+      redirect_to [@user, @item], notice: "You cannot edit items that do not belong to you"
+    end
   end
 
   # POST /items

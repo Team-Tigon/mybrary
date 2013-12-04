@@ -6,7 +6,9 @@
 
 
     <% @name_matches.each do |item| %>
-      <%= link_to item.name, user_item_path(item.user_id, item.id) %>
+      <%= link_to "#{item.name} - #{item.type_list.last}", user_item_path(item.user_id, item.id) %>
+      <br>
+      <%= link_to "Owned by #{item.user.name}", item.user %>
       <br>
     <% end %>
 
