@@ -84,7 +84,11 @@ class UsersController < ApplicationController
   end
 
   def splash
-    render :layout => false
+    if current_user
+      redirect_to current_user
+    else
+      render :layout => false
+    end
   end
 
   private

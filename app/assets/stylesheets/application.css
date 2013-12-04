@@ -25,6 +25,19 @@ a.group-link:visited {
   color: white;
 }
 
+.tigon-homelink {
+  margin: 18px 13px 0;
+  outline: 0;
+}
+
+.body-colorizer {
+  background: #efefef;
+}
+
+.table-outliner {
+  border: 1px solid #DDDDDD;
+}
+
 .btn-inline {
   float: left;
   margin-right: 3px;
@@ -50,6 +63,20 @@ a.group-link:visited {
 
 .navbar-padbar {
   padding-top: 10px;
+}
+
+.jumbo-padder {
+  padding-top: 10px;
+}
+
+.jumbo-picture {
+  background-image: url('mybrary-jumbo.gif');
+  background-size: cover;
+  background-repeat:no-repeat;
+}
+
+.jumbo-text {
+  opacity: 1;
 }
 
 .navbar-formpad {

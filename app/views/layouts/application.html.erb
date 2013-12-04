@@ -10,7 +10,7 @@
     <!--Change order for full width navbar
   <div class="navbar"> 
     <div class="container" data-toggle="clingify">-->
-  <div class="container" data-toggle="clingify">
+  <div data-toggle="clingify">
     <div class="navbar">   
         <!--
       mobile collapse menu button
@@ -41,8 +41,7 @@
         
         <!--main navigation-->
         <ul class="nav navbar-nav">
-          <li class="home-link"><a href="index.htm"><i class="fa fa-home"></i><span class="hidden">Home</span></a></li>
-          <li><%= link_to "Home", root_path %></li>
+          <li class="home-link"><a href="<%= root_path %>"><%= image_tag("houses.png", :class => "tigon-homelink") %><span class="hidden">Home</span></a></li>
           <% if current_user %>
             <li><a href="<%= users_path %>" class="menu-item">Admin</a></li>
               <li><a href="<%= groups_path %>" class="menu-item">Groups</a></li>
@@ -82,10 +81,15 @@
 <!-- Groups checkbox -->
 <!-- Search bar that outputs all titles with the tag and/or titles themselves -->
 
-<div class="container">
+<div class="container body-colorizer">
 
-<%= yield %>
+  <%= yield %>
 
+
+  <footer>
+    <hr>
+    <p>&copy; James Tong, Sam Yang, & Josh Scaglione - Team Tigon @flatiron 2013</p>
+  </footer>
 </div>
 
 </body>
