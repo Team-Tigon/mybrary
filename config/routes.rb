@@ -17,6 +17,10 @@ Mybrary::Application.routes.draw do
   post 'group/:id/join_group/:user_id' => 'groups#join_group', as: :join_group
   post 'group/:id/leave_group/:user_id' => 'groups#leave_group', as: :leave_group
 
+  post 'group/:id/approve_member/:user_id' => 'groups#approve_member', as: :approve_member
+  post 'group/:id/deny_member/:user_id' => 'groups#deny_member', as: :deny_member
+
+
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]

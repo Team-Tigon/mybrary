@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: [:show, :edit, :update, :destroy, :join_group, :leave_group]
+  before_action :set_group, only: [:show, :edit, :update, :destroy, :join_group, :leave_group, :approve_member, :deny_member]
 
   # GET /groups
   # GET /groups.json
@@ -10,10 +10,16 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
-    @group_items = @group.users.includes(:items).map do |user|
-      user.items 
-    end.flatten
-
+    @available_group_items = []
+    @unavailable_group_items = []
+    @group.users.includes(:items).each do |user|
+      if user != current_user
+        @available_group_items = @available_group_items + user.items.where(:state => "available") 
+        @unavailable_group_items = @unavailable_group_items +  user.items.where.not(:state => "available")
+      end 
+    end
+    @members = @group.memberships.where.not(:state => "pending")
+    @pending = @group.memberships.where(:state => "pending")
   end
 
 
@@ -28,7 +34,7 @@ class GroupsController < ApplicationController
 
   def join_group
     @group.memberships.create(:user_id => params[:user_id])
-    redirect_to @group
+    redirect_to @group, notice: "Your membership request has been submitted"
   end
 
   def leave_group
@@ -42,13 +48,25 @@ class GroupsController < ApplicationController
     end
   end
 
+  def approve_member
+    membership = @group.memberships.find_by(:user_id => params[:user_id])
+    membership.approve_member
+    redirect_to @group
+  end
+
+  def deny_member
+    membership = @group.memberships.find_by(:user_id => params[:user_id])
+    membership.destroy
+    redirect_to @group
+  end
+
   # POST /groups
   # POST /groups.json
   def create
     @group = Group.new(group_params)
     respond_to do |format|
       if @group.save
-       @group.memberships.create(user_id: current_user.id)
+        @group.memberships.create(user_id: current_user.id, state: "owner")
         format.html { redirect_to @group, notice: 'Group was successfully created.' }
         format.json { render action: 'show', status: :created, location: @group }
       else

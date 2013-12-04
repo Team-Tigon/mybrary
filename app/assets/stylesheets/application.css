@@ -16,3 +16,25 @@
 a.btn:visited {
   color: white;
 }
+
+a.group-link:visited {
+  color: white;
+}
+
+.group-box {
+  color: #ffffff;
+  padding-bottom: 2px;
+  background-color: grey;
+  border-radius: 10px;
+}
+
+.group-header {
+  background-color: #1b1b1b;
+  padding: 1px;
+  border-bottom: 2px solid #55a79a;
+  border-radius: 10px;
+}
+
+.group-buffer {
+  padding: 0 1em 0;
+}

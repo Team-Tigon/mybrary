@@ -63,6 +63,19 @@ class User < ActiveRecord::Base
     end
   end
 
+  def group_membership(group)
+    self.memberships.where(:group_id => group.id).last
+  end
+
+  def group_member?(group)
+    self.groups.include?(group) && self.group_membership(group).state != "pending"
+  end
+
+  def group_admin?(group)
+    self.groups.include?(group) && self.group_membership(group).state == "admin" || self.group_membership(group).state == "owner"
+  end
+
+
   def available_to_borrow
     # Get group ids
     # Get users who belong to groups with those ids

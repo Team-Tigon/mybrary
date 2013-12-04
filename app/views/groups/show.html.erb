@@ -1,38 +1,74 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-12">
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @group.name %>
-</p>
+    <p>
+      <strong>Name:</strong>
+      <%= @group.name %>
+    </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @group.description %>
-</p>
-<% if current_user != nil %>
-  <% if !(current_user.groups.include?(@group)) %>
-    <%= button_to 'Join this group', join_group_path(@group.id, current_user.id) %>
-  <% else %>
-    <%= button_to 'Leave this group', leave_group_path(@group.id, current_user.id), data: { confirm: "Are you sure? #{'You are the last member. If you leave the group will be deleted.' if @group.memberships.size == 1}" } %>
-  <% end %>
-<% end %>
-
-<h4>Members (<%= @group.memberships.size %>):</h4>
-<ul>
-  <% @group.memberships.each do |m| %>
-    <li>
-      <%= link_to m.user.name, m.user %> (<%= pluralize( m.user.items.length, "item") %>)
-    </li>
+    <p>
+      <strong>Description:</strong>
+      <%= @group.description %>
+    </p>
+    <% if current_user != nil %>
+      <% if !(current_user.groups.include?(@group)) %>
+        <%= button_to 'Request to join this group', join_group_path(@group.id, current_user.id) %>
+      <% else %>
+        <%= button_to "#{current_user.group_membership(@group).state == "pending" ? "Withdraw join request" : "Leave this group"}", leave_group_path(@group.id, current_user.id), data: { confirm: "Are you sure? #{'You are the last member. If you leave the group will be deleted.' if @group.memberships.size == 1}" } %>
+      <% end %>
     <% end %>
-</ul>
+  </div>
+</div>
 
-<h4> Items (<%= @group_items.size %>): </h4>
-<ul>
-  <% @group_items.each do |item| %>
-    <li><%= link_to item.name, user_item_path(item.user_id, item.id) %></li>
-  <% end %>
+<div class="row">
+  <div class="col-md-12">
 
-</ul>
+    <% if current_user.group_member?(@group) && current_user.group_admin?(@group) %>
+      <h4>Pending Members (<%= @pending.size %>):</h4>
+      <ul>
+        <% @pending.each do |m| %>
+          <li>
+            <%= link_to m.user.name, m.user %> (<%= pluralize( m.user.items.length, "item") %>)
+            <%= button_to "Approve Membership", approve_member_path(@group.id, m.user_id) %>
+            <%= button_to "Deny Membership", deny_member_path(@group.id, m.user_id) %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
 
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
+    <h4>Members (<%= @members.size %>):</h4>
+    <ul>
+      <% @members.each do |m| %>
+        <li>
+          <%= link_to m.user.name, m.user %> (<%= pluralize( m.user.items.length, "item") %>)
+        </li>
+      <% end %>
+    </ul>
+
+    <% if current_user.group_member?(@group) %>
+
+      <h4> Available Items (<%= @available_group_items.size %>): </h4>
+      <ul>
+        <% @available_group_items.each do |item| %>
+          <li>
+            <%= link_to item.name, user_item_path(item.user_id, item.id) %>
+          </li>
+        <% end %>
+
+      </ul>
+
+      <h4> Currently Unavailable Items (<%= @unavailable_group_items.size %>): </h4>
+      <ul>
+        <% @unavailable_group_items.each do |item| %>
+          <li>
+            <%= link_to item.name, user_item_path(item.user_id, item.id) %>
+          </li>
+        <% end %>
+
+      </ul>
+    <% end %>
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_group_path(@group) %>
