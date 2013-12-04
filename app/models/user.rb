@@ -76,22 +76,35 @@ class User < ActiveRecord::Base
   end
 
 
-  def available_to_borrow(search = "")
+  def available_to_borrow
     # Get group ids
     # Get users who belong to groups with those ids
     # Get items of those users
     group_ids = self.groups.collect(&:id)
-    item_list = []
+    item_list = nil
     Group.where("id IN (?)", group_ids).includes(:users).each do |group|
       group.users.each do |user|
-        user_items = user.items if user != self
-        user_items = user_items.where("name like ?", "%#{search}%") if user_items && search != ""
-        item_list << user_items
+        if user != self
+          if item_list == nil
+            item_list ||= user.items
+          else
+            item_list.merge(user.items)
+          end
+        end
       end
     end
-    item_list.flatten.uniq.compact
+    item_list
   end
   
+  def search_items(search_string)
+    user_items = available_to_borrow.where("name like ?", "%#{search_string}%")
+    item_list = Item.tagged_with(search_string)
+    item_list = item_list.where
+    binding.pry
+
+
+  end
+
 end
 
 
