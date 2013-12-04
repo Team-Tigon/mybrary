@@ -42,3 +42,7 @@ a.group-link:visited {
 .group-buffer {
   padding: 0 1em 0;
 }
+
+.navbar-padbar {
+  padding-top: 10px;
+}
