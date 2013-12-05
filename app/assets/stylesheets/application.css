@@ -99,3 +99,7 @@ a.group-link:visited {
    font-weight: normal;
    font-size: 80%;
 }
+
+thead {
+  background-color: lightgray;
+}
