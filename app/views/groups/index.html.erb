@@ -24,7 +24,7 @@
 
     <h1>Other Groups</h1>
 
-    <% @groups.each do |group| %>
+    <% current_user.groups.each do |group| %>
       <% if !(group.users.include?(current_user)) %>
         <div class="group-box">
           <div class="nav group-header">
