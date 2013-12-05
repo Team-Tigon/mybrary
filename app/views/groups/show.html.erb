@@ -51,7 +51,6 @@
             <th>Status</th>
             <th>Owner</th>
             <th></th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -61,12 +60,11 @@
               <td><%= item.type_list.last %></td>
               <td><%= item.state.capitalize %> </td>
               <td><%= item.user.name %></td>
-              <td><% if current_user && current_user != item.user %>
+              <td style="width: 80px;"><% if current_user.group_member?(@group) && current_user != item.user %>
                 <%= button_to "Request", request_loan_path(current_user, item.id), :class => "btn btn-primary btn-xs" %> 
                 <% end %></td>
 
       <!-- Loops the <td> line so that both buttons fit on one line -->
-              <td></td>
             </tr>
           <% end %>
         </tbody>
@@ -81,8 +79,6 @@
             <th>Status</th>
             <th>Owner</th>
             <th></th>
-            <th></th>
-          </tr>
         </thead>
         <tbody>
           <% @unavailable_group_items.each do |item| %>
@@ -91,11 +87,9 @@
               <td><%= item.type_list.last %></td>
               <td><%= item.state.capitalize %> </td>
               <td><%= link_to item.user.name, item.user %></td>
-              <td><% if current_user == item.loans.last.user %>
+              <td style="width: 80px;"><% if current_user == item.loans.last %>
                   <%= button_to "Cancel", deny_loan_path(item.user.id, item.id), class: "btn btn-warning btn-xs btn-inline" %>
                   <% end %></td>
-                <td></td>
-              <td></td>
       <!-- Ends loop -->
             </tr>
           <% end %>
