@@ -100,8 +100,11 @@
           <tr>
             <td><%= link_to item.name, user_item_path(item.user_id, item.id) %></td>
             <td><%= item.type_list.last %></td>
-            <td>Input ? </td>
-            <td>time created?</td>
+            <td><%= item.state.capitalize %> </td>
+            <td>
+              </td>
+            <td>Available</td>
+
     <!-- Loops the <td> line so that both buttons fit on one line -->
             <td>
             </td>
@@ -116,8 +119,9 @@
           <tr>
             <td><%= link_to item.name, user_item_path(item.user_id, item.id) %></td>
             <td><%= item.type_list.last %></td>
-            <td>Input ? </td>
-            <td>time created?</td>
+            <td><%= item.state.capitalize %> </td>
+            <td></td>
+            <td><%= item.loans.last.created_at.strftime("%h %d") %></td>
     <!-- Loops the <td> line so that both buttons fit on one line -->
             <td>
             </td>
