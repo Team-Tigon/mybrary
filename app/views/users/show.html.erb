@@ -127,6 +127,7 @@
         <thead>
           <tr>
             <th>Title</th>
+            <th>Type</th>
             <th>Status</th>
             <th>Other User</th>
             <th>Date</th>
@@ -137,6 +138,7 @@
           <% @user.currently_borrowing.each do |loan|%>
             <tr>
               <td><%= link_to loan.item.name, user_item_path(loan.item.user_id, loan.item_id) %></td>
+              <td><%= loan.item.type_list.last %></td>
               <td>Borrowing</td>
               <td>from <%= link_to loan.item.user.name, loan.item.user %></td>
               <td>since <%= loan.created_at.strftime("%h %d") %></td>
@@ -146,6 +148,7 @@
           <% @user.currently_requesting.each do |loan|%>
             <tr>
               <td><%= link_to loan.item.name, user_item_path(loan.user.id, loan.item.id) %></td>
+              <td><%= loan.item.type_list.last %></td>
               <td>Waiting for loan</td>
               <td>from <%= link_to loan.item.user.name, user_path(loan.item.user) %></td>
               <td>since <%= loan.created_at.strftime("%h %d") %></td>
