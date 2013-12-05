@@ -1,6 +1,6 @@
 *Mybrary*
 
-Mybrary is an online catalag of items between your friends, work, or relatives.  
+Mybrary is a social sharing app that catalags items between your friends, work, or relatives.  
 
 It is simple to use. Just join a group, list your items, and request items.   
 
