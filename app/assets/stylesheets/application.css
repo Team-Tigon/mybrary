@@ -30,6 +30,10 @@ a.group-link:visited {
   outline: 0;
 }
 
+.fill-page {
+  min-height: 80%;
+}
+
 .body-colorizer {
   background: #efefef;
 }

@@ -97,12 +97,9 @@ class User < ActiveRecord::Base
   end
   
   def search_items(search_string)
-    user_items = available_to_borrow.where("name like ?", "%#{search_string}%")
-    item_list = Item.tagged_with(search_string)
-    item_list = item_list.where
-    binding.pry
-
-
+    user_items = available_to_borrow
+    name_items = user_items.where("name like ?", "%#{search_string}%")
+    all_results = (name_items + user_items.tagged_with([search_string], on: :tags, any: true)).uniq
   end
 
 end
