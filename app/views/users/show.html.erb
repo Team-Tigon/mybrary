@@ -61,7 +61,7 @@
         <% @user.my_requested_items.each do |item| %>
           <tr>
             <td><%= link_to item.name, user_item_path(@user.id, item.id) %></td>
-            <td><%= @user.my_requested_items.last.type_list.last %></td>
+            <td><%= item.type_list.last %></td>
             <td>Requested</td>
             <td><% if current_user == @user || current_user == item.loans.last.user %> <!-- hides names that are not the user's -->
               by <%= link_to item.loans.last.user.name, user_path(item.loans.last.user) %>
