@@ -4,7 +4,7 @@
     
     <h1>Discover Groups</h1>
 
-    <% current_user.recommend_groups.each do |user| %>
+    <% current_user.recommend_groups.each do |group| %>
       <div class="group-box">
         <div class="nav group-header">
           <h4 class="navbar-left group-buffer">
@@ -15,8 +15,10 @@
         <p class="group-buffer">
           <%= group.description %>
         </p>
-        <p>
-          You know 
+        <p class="group-buffer">
+          You know <% (current_user.grouped_users && group.users).each do |user| %>
+              <%= link_to user.name, user %>
+            <% end %> in this group.
         </p>
       </div>
       <br>
