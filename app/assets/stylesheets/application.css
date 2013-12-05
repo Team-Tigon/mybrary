@@ -91,3 +91,7 @@ a.group-link:visited {
   float: left;
 }
 
+.de-emphasize {
+   font-weight: normal;
+   font-size: 80%;
+}
