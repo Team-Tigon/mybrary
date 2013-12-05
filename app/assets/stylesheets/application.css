@@ -96,6 +96,7 @@ a.group-link:visited {
 .de-emphasize {
    font-weight: normal;
    font-size: 80%;
+   color: gray;
 }
 
 thead {
