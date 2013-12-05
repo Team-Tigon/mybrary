@@ -75,6 +75,25 @@ class User < ActiveRecord::Base
     self.groups.include?(group) && self.group_membership(group).state == "admin" || self.group_membership(group).state == "owner"
   end
 
+  def grouped_users
+    user_list = []
+    self.groups.includes(:users).each do |group|
+      group.users.each do |user|
+        user_list << user if user != self && !user_list.include?(user)
+      end
+    end
+    user_list
+  end
+
+  def recommend_groups
+    group_list = []
+    self.grouped_users.each do |user|
+      user.groups.each do |group|
+        group_list << group if !(self.groups.include?(group))
+      end
+    end
+    group_list
+  end
 
   def available_to_borrow
     # Get group ids

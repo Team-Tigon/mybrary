@@ -22,7 +22,7 @@ a.btn:visited {
 }*/
 
 a.group-link:visited {
-  color: white;
+  color: #CFCFCD;
 }
 
 .tigon-homelink {
@@ -52,17 +52,15 @@ a.group-link:visited {
 }
 
 .group-box {
-  color: #ffffff;
   padding-bottom: 2px;
-  background-color: grey;
-  border-radius: 10px;
+  background-color: #EFEFEF;
 }
 
 .group-header {
   background-color: #1b1b1b;
+  color: #CFCFCF;
   padding: 1px;
   border-bottom: 2px solid #55a79a;
-  border-radius: 10px;
 }
 
 .group-buffer {

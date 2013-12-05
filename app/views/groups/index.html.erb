@@ -2,43 +2,24 @@
   <div class="col-md-1"></div>
   <div class="col-md-10">
     
-    <h1>Your Groups</h1>
+    <h1>Discover Groups</h1>
 
-    <% current_user.groups.each do |group| %>
+    <% current_user.recommend_groups.each do |user| %>
       <div class="group-box">
         <div class="nav group-header">
           <h4 class="navbar-left group-buffer">
-            <%= link_to "#{group.name} (#{pluralize(group.members.size, 'member')}) #{'(' + group.pending_members.size.to_s + ' pending)' if current_user.group_admin?(group)}", group, :class => "group-link" %>
+            <%= link_to "#{group.name} (#{pluralize(group.members.size, 'member')})", group, :class => "group-link" %>
           </h4>
-          <h4 class="navbar-right group-buffer"><%= current_user.memberships.where(:group_id => group.id).last.state %></h4>
         </div>
         <span></span>
         <p class="group-buffer">
           <%= group.description %>
         </p>
+        <p>
+          You know 
+        </p>
       </div>
       <br>
-    <% end %>
-
-    <%= link_to 'New Group', new_group_path, :class => "btn btn-primary" %>
-
-    <h1>Other Groups</h1>
-
-    <% @groups.each do |group| %>
-      <% if !(group.users.include?(current_user)) %>
-        <div class="group-box">
-          <div class="nav group-header">
-            <h4 class="navbar-left group-buffer">
-              <%= link_to "#{group.name} (#{pluralize(group.members.size, 'member')})", group, :class => "group-link" %>
-            </h4>
-          </div>
-          <span></span>
-          <p class="group-buffer">
-            <%= group.description %>
-          </p>
-        </div>
-        <br>
-      <% end %>
     <% end %>
 
   </div>
