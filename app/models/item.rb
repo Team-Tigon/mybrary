@@ -3,8 +3,7 @@ class Item < ActiveRecord::Base
   has_many :loans
   has_many :borrowers, through: :loans, source: "user"
 
-  acts_as_taggable
-  acts_as_taggable_on :types
+  acts_as_taggable_on :tags, :types
 
   state_machine :initial => :available do
 

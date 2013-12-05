@@ -44,6 +44,7 @@ class ItemsController < ApplicationController
   def update
     @item = @user.items.find(params[:id])
 
+    @item.update(:type_list => "", :tag_list => "")
     respond_to do |format|
       if @item.update(item_params)
         format.html { redirect_to [@user, @item], notice: 'item was successfully updated.' }
