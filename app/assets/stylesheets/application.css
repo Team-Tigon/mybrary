@@ -103,3 +103,7 @@ thead {
   background-color: lightgray;
 }
 
+.my-inline {
+  display:inline;
+}
+

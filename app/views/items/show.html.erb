@@ -3,24 +3,32 @@
   <div class="col-md-10">
 
     <p id="notice"><%= notice %></p>
-    <h3><%= @item.name %> - <%= @item.type_list %></h3>
-    <h4>Tags: <%= @item.tag_list %></h4>
+    <h3><%= @item.name %> - <span class="de-emphasize"><%= @item.type_list %></span></h3>
+         
+          <% if @item.user.name == current_user.name %> 
+            <div><i>Owned by You<i> </div>
+          <% else %>
+            <div><i>Owned by <%= @item.user.name %> </i></div>
+          <% end %>
+       <br>
+    <h4>Tags:</h4>
+    <div><%= @item.tag_list %></div><br>
 
-    <h4> History: </h4>
+
+
+    <h4>  Description:      </h4>
+    <div><%= @item.description  %></div></br>
+  <h4> History: </h4>
     <% @item.loans.each do |loan| %>
       <ol>
         <% if loan.borrowed_on %>
-          <li><%= "Borrowed on #{loan.borrowed_on.strftime("%h %d")}" %></li>
+          <li><%= "Borrowed by #{loan.user.name} on #{loan.borrowed_on.strftime("%h %d")}" %></li>
         <% end %>
         <% if loan.returned_on %>
-          <li><%= "Returned on #{loan.returned_on.strftime("%h %d")}" %></li>
+          <li><%= "Returned by #{loan.user.name} on #{loan.returned_on.strftime("%h %d")}" %></li>
         <% end %>
       </ol>
     <% end %>
-
-    <h4>  Description:      </h4>
-    <div><%= @item.description  %></div>
-
     <br>
     <% if current_user && current_user != @user && @item.available? %>
         <%= button_to "Request to Borrow", request_loan_path(current_user, @item.id), :class => "btn btn-primary btn-sm" %> 
