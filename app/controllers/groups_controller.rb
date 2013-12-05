@@ -13,8 +13,8 @@ class GroupsController < ApplicationController
     @available_group_items = []
     @unavailable_group_items = []
     @group.users.includes(:items).each do |user|
-      if user != current_user
-        @available_group_items = @available_group_items + user.items.where(:state => "available") 
+      if user != current_user && user.group_membership(@group).state != "pending"
+        @available_group_items = @available_group_items + user.items.where(:state => "available")
         @unavailable_group_items = @unavailable_group_items +  user.items.where.not(:state => "available")
       end 
     end
