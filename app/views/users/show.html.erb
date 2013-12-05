@@ -6,21 +6,20 @@
     <div class="tabbable">
       <ul id="myTab" class="nav nav-tabs">
         <li class="active"><a href="#tab1" data-toggle="tab">
-          <% if @user != current_user %><%= @user.name %>'s<% else %>My<% end %> Inventory</a>
-        </li>
-        <li class=""><a href="#tab2" data-toggle="tab">
-          <% if @user != current_user %><%= @user.name %>'s<% else %>My<% end %> Borrowings</a>
-        </li>
-        <li class=""><a href="#tab3" data-toggle="tab">Tab 3</a></li>
+          <% if @user != current_user %><%= @user.name %>'s<% else %>My<% end %> Inventory</a></li>
+        <% if @user == current_user %>
+        <li class=""><a href="#tab2" data-toggle="tab">My Borrowings</a></li>
+        <% end %>
+        <li class=""><a href="#tab3" data-toggle="tab">My Groups</a></li>
       </ul>
       <div id="myTabContent" class="tab-content">
+<!-- BEGINS TAB1 CONTENT -->
         <div class="tab-pane fade active in" id="tab1">
-<!-- BEGINS FIRST TAB CONTENT -->
           <div class="user-header">
             <h4 class="navbar-left"><%= @user.my_requested_items.size %>
-              <span class="de-emphasize"> requested &nbsp;&nbsp;</span><%= @user.my_loaned_items.size %>
-              <span class="de-emphasize"> lent out &nbsp;&nbsp;</span><%= @user.my_available_items.size %>
-              <span class="de-emphasize"> available &nbsp;&nbsp;</span><%= @user.items.size %>
+              <span class="de-emphasize"> requested &nbsp;&nbsp;&nbsp;</span><%= @user.my_loaned_items.size %>
+              <span class="de-emphasize"> lent out &nbsp;&nbsp;&nbsp;</span><%= @user.my_available_items.size %>
+              <span class="de-emphasize"> available &nbsp;&nbsp;&nbsp;</span><%= @user.items.size %>
               <span class="de-emphasize"> total</span>
             </h4>
             <p class="navbar-right">
@@ -96,16 +95,15 @@
             </table>
 
           </div>
-<!-- ENDS FIRST TAB CONTENT -->
+<!-- ENDS TAB1 CONTENT -->
         </div>              
-<!-- BEGIN SECOND TAB CONTENT -->
+<!-- BEGIN TAB2 CONTENT -->
         <div class="tab-pane fade" id="tab2">
-          <% if @user != current_user %>
-            <h4>Borrowing Items  (Total borrowing: <%= @user.currently_borrowing.size %> / Total waiting: <%= @user.currently_requesting.size %>)</h4>
-          <% else %>
-          <h4 class="margin-top-large">Borrowing Items  (Total borrowing: <%= @user.currently_borrowing.size %> / 
-              Total waiting: <%= @user.currently_requesting.size %>)
-          </h4>
+            <h4><%= @user.currently_borrowing.size %>
+              <span class="de-emphasize"> borrowing &nbsp;&nbsp;&nbsp;</span><%= @user.currently_requesting.size %>
+              <span class="de-emphasize"> waiting to get &nbsp;&nbsp;&nbsp;</span><%= @user.items.size %>
+              <span class="de-emphasize"> total</span>
+            </h4>
 
             <table class="table table-striped table-hover table-condensed table-outliner">
               <thead>
@@ -144,22 +142,18 @@
                 <% end %>
               </tbody>
             </table>
-          <% end %>
+
         </div>
-<!-- ENDS SECOND TAB CONTENT -->
+<!-- ENDS TAB2 CONTENT -->
         <div class="tab-pane fade" id="tab3">
-          <p></p>
+          <h4><br>
+            Groups (<%= @user.groups.size %>)
+            <% @user.groups.each do |g|%>
+              <li><%= link_to g.name, g %></li>
+            <% end %>
+          </h4>
         </div>
       </div>
     </div>
-
-
-    <h4><br>
-      Groups (<%= @user.groups.size %>)
-      <% @user.groups.each do |g|%>
-        <li><%= link_to g.name, g %></li>
-      <% end %>
-    </h4>
-
   </div>
 </div>
