@@ -9,4 +9,5 @@ class Group < ActiveRecord::Base
   def pending_members
     self.memberships.where(:state => "pending")
   end
+
 end

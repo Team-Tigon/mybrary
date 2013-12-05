@@ -168,9 +168,9 @@
                   <td><%= link_to group.name, group %></td>
                   <td><%= group.description %></td>
                   <td><%= group.members.size %></td>
-                  <td>[add item total]</td>
-                  <td>[admin/member/pending]</td>
-                  <td>[manage button]</td>
+                  <td><%= group.members.inject(0) {|i, m| i + (m.user.items.size) } %></td>
+                  <td><%= @user.group_membership(group).state.titleize %></td>
+                  <td><%= link_to("Edit Group", edit_group_path(group)) if @user.group_membership(group).state == "owner" %></td>
                 </tr>
               <% end %>
             </tbody>
