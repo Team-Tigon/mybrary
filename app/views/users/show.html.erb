@@ -86,6 +86,7 @@
         <% @user.my_loaned_items.each do |item| %>
           <tr>
             <td><%= link_to item.name, user_item_path(@user.id, item.id) %></td>
+            <td><%= item.type_list.last %></td>
             <td>Lent out</td>
             <td><% if current_user == @user || current_user == item.loans.last.user %> <!-- hides names that are not the user's -->
               to <%= link_to item.loans.last.user.name, item.loans.last.user %>
@@ -101,6 +102,7 @@
         <% @user.my_available_items.each do |item| %>
           <tr>
             <td><%= link_to item.name, user_item_path(@user.id, item.id) %></td>
+            <td><%= item.type_list.last %></td>
             <td>Available</td>
             <td></td>
             <td></td>
