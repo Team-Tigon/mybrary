@@ -81,28 +81,32 @@ class User < ActiveRecord::Base
     # Get users who belong to groups with those ids
     # Get items of those users
     group_ids = self.groups.collect(&:id)
-    item_list = nil
+    item_lists = []
     Group.where("id IN (?)", group_ids).includes(:users).each do |group|
       group.users.each do |user|
         if user != self
-          if item_list == nil
-            item_list ||= user.items
-          else
-            item_list.merge(user.items)
-          end
+          item_lists << user.items
         end
       end
     end
-    item_list
+    item_lists.uniq
   end
   
   def search_items(search_string)
-    user_items = available_to_borrow.where("name like ?", "%#{search_string}%")
-    item_list = Item.tagged_with(search_string)
-    item_list = item_list.where
-    binding.pry
+    user_item_lists = available_to_borrow
+    name_items = user_item_lists.collect do |user_items|
+      user_items.where("name like ?", "%#{search_string}%")
+    end.flatten
 
+    type_items = user_item_lists.collect do |user_items|
+      user_items.tagged_with([search_string], :on => :types, :any => true)
+    end.flatten
 
+    tag_items = user_item_lists.collect do |user_items|
+      user_items.tagged_with([search_string], :on => :tags, :any => true)
+    end.flatten
+
+    all_results = (name_items + type_items + tag_items).uniq
   end
 
 end
