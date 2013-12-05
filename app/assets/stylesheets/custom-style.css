@@ -55,6 +55,38 @@
   background-color: lightyellow;
 }
 
+body a {
+  color: #09C;
+  text-decoration: none;
+}
+
+ul.nav-tabs li.active a {
+  font-size: 100%;
+  font-weight: bold;
+  background-color: #efefef;
+}
+
+.tabbable > ul.nav-tabs li.active a {
+  border-top: 4px solid #09C;
+  border-right: 1px solid darkgray;
+  border-left: 1px solid darkgray;
+  color: #505050;
+}
+
+.tabbable > ul.nav-tabs li.active a:hover {
+  background-color: #efefef;
+  border-top: 4px solid #09C;
+  border-right: 1px solid darkgray;
+  border-left: 1px solid darkgray;
+}
+
+.tabbable > ul.nav-tabs, ul.nav-tabs {
+border-bottom: 1px solid darkgray;
+}
+
+.tabbable > ul.nav-tabs li a:hover {
+background-color: lightgray;
+
 /*
  * --------------------------------------------------
  * 3. Responsiveness/media queries
