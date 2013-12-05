@@ -16,10 +16,10 @@
  */
 
 /* changes links colors for login and signup to be white after visit */
-
+/*
 a.btn:visited {
   color: white;
-}
+}*/
 
 a.group-link:visited {
   color: white;
