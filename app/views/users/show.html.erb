@@ -61,7 +61,7 @@
         <% @user.my_requested_items.each do |item| %>
           <tr>
             <td><%= link_to item.name, user_item_path(@user.id, item.id) %></td>
-            <td><%= @user.my_requested_items.last.type_list.last %></td>
+            <td><%= item.type_list.last %></td>
             <td>Requested</td>
             <td><% if current_user == @user || current_user == item.loans.last.user %> <!-- hides names that are not the user's -->
               by <%= link_to item.loans.last.user.name, user_path(item.loans.last.user) %>
@@ -86,6 +86,7 @@
         <% @user.my_loaned_items.each do |item| %>
           <tr>
             <td><%= link_to item.name, user_item_path(@user.id, item.id) %></td>
+            <td><%= item.type_list.last %></td>
             <td>Lent out</td>
             <td><% if current_user == @user || current_user == item.loans.last.user %> <!-- hides names that are not the user's -->
               to <%= link_to item.loans.last.user.name, item.loans.last.user %>
@@ -101,6 +102,7 @@
         <% @user.my_available_items.each do |item| %>
           <tr>
             <td><%= link_to item.name, user_item_path(@user.id, item.id) %></td>
+            <td><%= item.type_list.last %></td>
             <td>Available</td>
             <td></td>
             <td></td>
@@ -125,6 +127,7 @@
         <thead>
           <tr>
             <th>Title</th>
+            <th>Type</th>
             <th>Status</th>
             <th>Other User</th>
             <th>Date</th>
@@ -135,6 +138,7 @@
           <% @user.currently_borrowing.each do |loan|%>
             <tr>
               <td><%= link_to loan.item.name, user_item_path(loan.item.user_id, loan.item_id) %></td>
+              <td><%= loan.item.type_list.last %></td>
               <td>Borrowing</td>
               <td>from <%= link_to loan.item.user.name, loan.item.user %></td>
               <td>since <%= loan.created_at.strftime("%h %d") %></td>
@@ -144,6 +148,7 @@
           <% @user.currently_requesting.each do |loan|%>
             <tr>
               <td><%= link_to loan.item.name, user_item_path(loan.user.id, loan.item.id) %></td>
+              <td><%= loan.item.type_list.last %></td>
               <td>Waiting for loan</td>
               <td>from <%= link_to loan.item.user.name, user_path(loan.item.user) %></td>
               <td>since <%= loan.created_at.strftime("%h %d") %></td>
