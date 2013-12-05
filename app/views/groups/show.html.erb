@@ -2,14 +2,14 @@
   <div class="col-md-12">
     <p id="notice"><%= notice %></p>
 
-    <p>
-      <strong>Name:</strong>
-      <%= @group.name %>
-    </p>
+    <h1>
+      <strong>
+      <%= @group.name %></strong>
+    </h1>
 
     <p>
-      <strong>Description:</strong>
-      <%= @group.description %>
+      <strong>
+      <%= @group.description %></strong>
     </p>
     <% if current_user != nil %>
       <% if !(current_user.groups.include?(@group)) %>
@@ -50,27 +50,80 @@
       <% end %>
     </ul>
 
-    <% if current_user.group_member?(@group) %>
-
-      <h4> Available Items (<%= @available_group_items.size %>): </h4>
-      <ul>
-        <% @available_group_items.each do |item| %>
-          <li>
-            <%= link_to item.name, user_item_path(item.user_id, item.id) %>
-          </li>
-        <% end %>
-
-      </ul>
-
-      <h4> Currently Unavailable Items (<%= @unavailable_group_items.size %>): </h4>
-      <ul>
-        <% @unavailable_group_items.each do |item| %>
-          <li>
-            <%= link_to item.name, user_item_path(item.user_id, item.id) %>
-          </li>
-        <% end %>
-
-      </ul>
-    <% end %>
   </div>
 </div>
+
+<div class="row">
+  <div class="col-md-12">
+   <h4 class="margin-top-large">Group Items (Available: <%= @available_group_items.size %>) 
+    </h4>
+    <table class="table table-striped table-hover table-condensed table-outliner">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Type</th>
+          <th>Status</th>
+          <th>Owner</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @available_group_items.each do |item| %>
+          <tr>
+            <td><%= link_to item.name, user_item_path(item.user_id, item.id) %></td>
+            <td><%= item.type_list.last %></td>
+            <td><%= item.state.capitalize %> </td>
+            <td><%= item.user.name %></td>
+            <td><% if current_user && current_user != item.user %>
+              <%= button_to "Request", request_loan_path(current_user, item.id), :class => "btn btn-primary btn-xs" %> 
+              <% end %></td>
+
+    <!-- Loops the <td> line so that both buttons fit on one line -->
+            <td>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>    
+
+
+<div class="row">
+  <div class="col-md-12">
+   <h4 class="margin-top-large">Group Items (Unavailable Items: <%= @unavailable_group_items.size %>)
+    </h4>
+    <table class="table table-striped table-hover table-condensed table-outliner">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Type</th>
+          <th>Status</th>
+          <th>Owner</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @unavailable_group_items.each do |item| %>
+          <tr>
+            <td><%= link_to item.name, user_item_path(item.user_id, item.id) %></td>
+            <td><%= item.type_list.last %></td>
+            <td><%= item.state.capitalize %> </td>
+            <td><%= link_to item.user.name, item.user %></td>
+            <td><% if current_user == item.loans.last.user %>
+                <%= button_to "Cancel", deny_loan_path(item.user.id, item.id), class: "btn btn-warning btn-xs btn-inline" %>
+                <% end %></td>
+              <td></td>
+
+            <td></td>
+    <!-- Ends loop -->
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>    
