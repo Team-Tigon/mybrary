@@ -72,7 +72,7 @@ class User < ActiveRecord::Base
   end
 
   def group_admin?(group)
-    self.groups.include?(group) && self.group_membership(group).state == "admin" || self.group_membership(group).state == "owner"
+    self.groups.include?(group) && (self.group_membership(group).state == "admin" || self.group_membership(group).state == "owner")
   end
 
   def grouped_users
