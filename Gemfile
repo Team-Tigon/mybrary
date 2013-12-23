@@ -52,6 +52,7 @@ gem 'acts-as-taggable-on'
 gem 'will_paginate'
 
 gem 'capistrano', '~>2.0'
+gem 'rvm-capistrano'
 
 group :test, :development do
   gem "pry-rails"
