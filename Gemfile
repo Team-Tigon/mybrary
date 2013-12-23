@@ -51,6 +51,8 @@ gem 'acts-as-taggable-on'
 
 gem 'will_paginate'
 
+gem 'capistrano', '~>2.0'
+
 group :test, :development do
   gem "pry-rails"
   gem "rspec-rails"
