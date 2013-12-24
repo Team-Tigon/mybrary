@@ -28,7 +28,7 @@ role :db,  "your slave db-server here"
 # USED CHEF TO QUICK DEPLOY TO DIGITALOCEAN. BELOW IS ADDED CODE
 
 @application_name = "mybrary"
-@application_ip_address = "192.241.242.243"
+@application_ip_address = "162.243.113.189"
 @application_repo = "git@github.com:Team-Tigon/mybrary.git"
 
 require "bundler/capistrano"
