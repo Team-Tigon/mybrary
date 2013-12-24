@@ -14,3 +14,6 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignores locally stored env data such as FB dev passwords, secret tokens, etc
+/config/local_env.yml

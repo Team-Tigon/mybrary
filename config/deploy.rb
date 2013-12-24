@@ -25,7 +25,7 @@ role :db,  "your slave db-server here"
 # end
 
 
-# BELOW WAS INSERTED AS PER INSTRUCTIONS FOR DIGITALOCEAN QUICK DEPLOY USING FLATIRON'S TOOL
+# USED CHEF TO QUICK DEPLOY TO DIGITALOCEAN. BELOW IS ADDED CODE
 
 @application_name = "mybrary"
 @application_ip_address = "192.241.242.243"
